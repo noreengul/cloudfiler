@@ -1,0 +1,39 @@
+
+.setting{
+  font-weight: 900;
+  font-size:26px;
+  color: #3c3c3c;
+}
+.cloud{
+  font-weight: 900;
+  font-size:26px;
+  color: #000000;
+  margin-top: 8px;
+}
+.navbar-default .navbar-collapse {
+  text-align: center;
+}
+
+.header_nav .header-right-db{
+  margin-top: 10px;
+}
+
+.header_nav .header-right-db a{
+  font-size:17px;
+  font-weight: 600;
+  color:#A8A8A8 !important;
+}
+
+.header_nav{
+  background-color: unset;
+  border: unset;
+}
+
+.navbar .middle_nav {
+  display: inline-block;
+  float: none;
+}
+
+.middle_nav{
+  margin:auto;
+}

@@ -1,0 +1,62 @@
+<div class="row ">
+  <div class="col-md-7">
+    <img width="50" height="50" src = "./../assets/images/folder-open.svg" alt="logo"/>
+    <div class="title-div">
+      <span class="title">Locations</span>
+    </div>
+    <span class="para float-right">Locations are only accessible to nominated users and groups.</span>
+  </div>
+  <div class="col-md-4  ">
+  </div>
+  <div class="col-md-1  ">
+    <img class="float-right " width="40" height="40" src = "./../assets/images/Help-black.svg" alt="logo" />
+  </div>
+</div>
+<div class="row" style="margin-top:20px;margin-bottom: 20px;">
+  <div class="col-md-4 ">
+     <input type="text"  [(ngModel)]="searchTerm" (input)="search(searchTerm)"  name="search" class="form-control location-filter"  placeholder="Type here to filter"  >
+   </div>
+</div>
+
+<!--table row -->
+<div class="row location-table">
+    <div class="col-md-12  ">
+        <table class="table table-responsive ">
+          <thead>
+              <tr>
+                  <th  class="header first_cell" scope="col"></th>
+                  <th  class="header" scope="col" *ngFor="let group of groups.slice().reverse() ">{{group.description}}</th>
+              </tr>
+          </thead>
+          <tbody >
+              <tr *ngFor="let location of locations;let i = index;" >
+
+                  <td *ngIf="!location.type" class="first_cell" [ngClass]="{'edit_location':  !location.type }"  id="location_{{i}}">
+                    <app-edit-location [selectLocation]="location" [selectedIndex]="i"  (locationToEdit)="deleteLocation(i)"></app-edit-location>
+                  </td>
+                  <td *ngIf="location.type" class="first_cell" >{{location.description}}</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>Admin</td>
+                  <td></td>
+                  <td>User</td>
+
+              </tr>
+          </tbody>
+          <tbody >
+              <tr>
+                  <td colspan="8" style="text-align: center">No Data Found</td>
+              </tr>
+          </tbody>
+      </table>
+    </div>
+</div>
+
+<div class="row">
+  <div class="col-md-12  ">
+      <app-add-location   (locationToAdd)="addLocation($event)"></app-add-location>
+  </div>
+</div>

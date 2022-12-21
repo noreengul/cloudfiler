@@ -1,0 +1,93 @@
+
+<button (click)="open(modalPathLocation)"   class="btn edit_model_button btn_site">View/Edit Sync Site</button>
+
+<ng-template #modalPathLocation let-modal  >
+
+  <div class="site_model">
+
+    <div class="modal-header" style="border-bottom:unset">
+      <div class="row edit-location-header">
+        <div class="col-md-12 head">
+          <img width="35" height="35" src = "./../assets/images/refresh.svg" alt="logo"/><span class="title">Sync sites</span> <img class="float-right " width="28" height="28" src = "./../assets/images/Help-black.svg" alt="logo" />
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-body site_files"  style="margin-left: 1%;">
+        <div class="row select_site">
+              <div class="col-md-12">
+                  <span>Site type</span>
+                  <input type="text" name="search" class="form-control share-point"  placeholder="Share Point"  >
+                  <img width="25"  height="25" src = "./../assets/images/plus-square-grey.svg" alt="logo" (click)="openSiteModel(modalSitePathLocation)" />
+              </div>
+        </div>
+        <div class="row listing_paths">
+            <div class="col-md-9"> <span>\\server27\projects\J77456\email (File System) </span></div>
+            <div class="col-md-3 float-right">
+                <img width="20" class="float-right margin-left-7"  height="20" src = "./../assets/images/minus-square-grey.svg" alt="logo" (click)="openSiteModel(modalSitePathLocation)" />
+                <img width="20"  class="float-right" height="20" src = "./../assets/images/edit.svg" alt="logo"/>&nbsp;&nbsp;&nbsp;
+            </div>
+        </div>
+
+        <div class="row modal-footer">
+          <div class="col-md-12 ">
+            <button type="button" class="btn btn-primary modal-btn  float-right "  (click)="modal.dismiss('Cross click')">Cancel</button>
+            <button type="button" class="btn btn-primary  modal-btn float-right"  (click)="modal.dismiss('Cross click')">OK</button>
+          </div>
+        </div>
+
+    </div>
+
+
+  </div>
+
+</ng-template>
+
+<ng-template #modalSitePathLocation let-modal  >
+
+  <div class="site_model"  >
+
+    <div class="modal-header" style="border-bottom:unset">
+        <div class="row edit-location-header">
+            <div class="col-md-12 head">
+                <img width="35" height="35" src = "./../assets/images/refresh.svg" alt="logo"/><span class="title">File System folder sync</span> <img class="float-right " width="28" height="28" src = "./../assets/images/Help-black.svg" alt="logo" />
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-body site_files"  style="margin-left: 1%;">
+
+        <div class="row modal-footer">
+            <div class="col-md-12">
+                <span>Path</span>
+                <input type="text" name="search" class="form-control  browser-input"  placeholder="Share Point"  value="\\server27\projects\Singapore\JO665 - Bay View" >
+                <label class="btn custom-file-upload">
+                  <input type="file" class="browser-file"/>
+                  Browser
+                </label>
+            </div>
+
+        </div>
+
+        <div class="row  ">
+            <div class="col-md-12"><span>NOTE: where possible use full UNC paths e.g <br>  &nbsp; &nbsp; &nbsp; \\server27\projects\Singapore\JO665 - Bay View </span> </div>
+        </div>
+
+        <div class="row  ">
+            <div class="col-md-12">
+                <img id="checked"   height="30" src = "./../assets/images/checkbox-checked-outline.svg" alt="logo"/>
+                <span>Separate into folders per year e.g ..\2025, ..2026, etc.</span>
+            </div>
+        </div>
+
+        <div class="row modal-footer">
+            <div class="col-md-12 ">
+                <button type="button" class="btn btn-primary modal-btn  float-right "  (click)="modal.dismiss('Cross click')">Cancel</button>
+                <button type="button" class="btn btn-primary  modal-btn float-right"  (click)="modal.dismiss('Cross click')">Add</button>
+            </div>
+        </div>
+
+    </div>
+  </div>
+
+</ng-template>

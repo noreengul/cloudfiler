@@ -1,0 +1,42 @@
+
+
+.location-filter {
+  background: url("/../assets/images/filter.jpeg")no-repeat 100%;
+  background-size: 16px;
+  background-origin: content-box;
+}
+
+.header {
+  position: sticky;
+  top:0;
+  border-right: #888888 solid 1px;
+  vertical-align: text-bottom;
+}
+
+.location-table table>thead {
+   height: 80px;
+}
+
+.location-table table>tbody>tr>td {
+  border: unset;
+}
+
+.location-table table thead th {
+  background-color:#7030A0 !important;
+  color:white !important;
+}
+
+.edit_location{
+  background-color: #D4BEE5 !important;
+  border-radius: 20px !important;
+}
+
+.location-table table td{
+   padding: 10px;
+}
+
+.location-table .first_cell{
+  width: 170px;
+
+}
+
