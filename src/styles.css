@@ -42,9 +42,6 @@ body{
   }
 }
 
-
-
-
 h1 {
   padding: 50px 0;
   font-weight: 400;
@@ -74,7 +71,6 @@ input {
 }
 
 .location_label {
-
   display: inline-block;
   margin: 0px;
   font-weight: 650 !important;
@@ -218,7 +214,6 @@ input:checked + .location_label {
 }
 
 .location-table {
-
   overflow-y: overlay;
   height:400px;
   margin-bottom: 35px;
@@ -255,12 +250,10 @@ input:checked + .location_label {
 }
 
 .site_model_class .modal-dialog{
-
   right: 20%;
 }
 
 .site_path_model .modal-dialog {
-
   left: 20%;
 }
 
