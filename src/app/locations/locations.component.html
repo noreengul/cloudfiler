@@ -28,11 +28,11 @@
                   <th  class="header" scope="col" *ngFor="let group of groups.slice().reverse() ">{{group.description}}</th>
               </tr>
           </thead>
-          <tbody >
+          <tbody *ngIf="totalLocations>0" >
               <tr *ngFor="let location of locations;let i = index;" >
 
                   <td *ngIf="!location.type" class="first_cell" [ngClass]="{'edit_location':  !location.type }"  id="location_{{i}}">
-                    <app-edit-location [selectLocation]="location" [selectedIndex]="i"  (locationToEdit)="deleteLocation(i)"></app-edit-location>
+                    <app-edit-location [selectLocation]="location" [selectedIndex]="i"  (locationToEdit)="deleteLocation(i)" (editLocationData)="updateLocation($event)"></app-edit-location>
                   </td>
                   <td *ngIf="location.type" class="first_cell" >{{location.description}}</td>
                   <td></td>
@@ -46,7 +46,7 @@
 
               </tr>
           </tbody>
-          <tbody >
+          <tbody *ngIf="totalLocations==0">
               <tr>
                   <td colspan="8" style="text-align: center">No Data Found</td>
               </tr>

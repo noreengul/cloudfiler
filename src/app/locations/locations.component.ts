@@ -15,6 +15,7 @@ export class LocationsComponent implements OnInit {
   searchTerm:any;
   selectLocation:any;
   locations !: any;
+  totalLocations !: any;
 
   isLoading!:true;
   groups !: Group[];
@@ -26,8 +27,10 @@ export class LocationsComponent implements OnInit {
   ngOnInit(): void {
 
       this.locationService.getLocations().subscribe(locations => {
-          this.locations = locations;
+          this.locations = locations.results;
+          this.totalLocations=locations.total;
       });
+
       this.groups = this.groupService.getGroups();
 
      //this.getData();
@@ -53,10 +56,21 @@ export class LocationsComponent implements OnInit {
 
      this.locationService.addLocation(newLocation).subscribe(responseData => {
         this.locationService.getLocations().subscribe(locations => {
-           this.locations = locations;
+           this.locations = locations.results;
+           this.totalLocations=locations.total;
         });
      });
 
+  }
+
+  updateLocation(Location:any){
+
+    //this.selectLocation=this.locations[selectedIndex];
+    console.log('test values');
+    console.log(Location);
+    //this.locationService.deleteLocation(this.selectLocation.id).subscribe(locations => {
+      //this.locations.splice(selectedIndex, 1);
+   // });
   }
 
 

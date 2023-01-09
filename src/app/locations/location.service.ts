@@ -19,7 +19,7 @@ export class LocationService{
         }).
         pipe(
             map( (responseData:any) => {
-                return   responseData.results;
+                return   responseData;
             })
         );
    }

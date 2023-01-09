@@ -6,7 +6,15 @@
   <div class="modal-header" style="border-bottom:unset">
     <div class="row edit-location-header">
       <div class="col-md-12 head">
-        <img width="35" height="35" src = "./../assets/images/edit.svg" alt="logo"/><span class="title">Location Properties: </span><span>{{selectLocation.description}}</span><img class="float-right " width="28" height="28" src = "./../assets/images/Help-black.svg" alt="logo" />
+        <img width="35" height="35" src = "./../assets/images/edit.svg" alt="logo"/>
+        <span class="title">Location Properties: </span>
+        <span *ngIf="showEditInput">
+          <input type="text" class="form-control" name="location-title" value="selectLocation.description" [(ngModel)]="selectLocation.description"  (keyup.enter)="onSaveLocationTitle()" >
+        </span>
+        <span (click)="allowEditLocationTitle()" *ngIf="!showEditInput">
+          {{selectLocation.description}}
+        </span>
+        <img class="float-right " width="28" height="28" src = "./../assets/images/Help-black.svg" alt="logo" />
       </div>
     </div>
   </div>

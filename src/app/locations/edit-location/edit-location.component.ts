@@ -10,10 +10,12 @@ import {LocationService} from "../location.service";
 
 export class EditLocationComponent implements OnInit {
   closeModal='';
+  showEditInput=false;
 
   @Input() selectLocation: any;
   @Input() selectedIndex: any;
   @Output() locationToEdit = new EventEmitter<string>();
+  @Output() editLocationData = new EventEmitter<string>();
   constructor(private modalService: NgbModal,private locationService:LocationService) {
 
   }
@@ -40,6 +42,19 @@ export class EditLocationComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+  }
+
+  allowEditLocationTitle(){
+    alert('fsfsdf');
+    alert(this.selectLocation.description);
+    this.showEditInput=true;
+  }
+
+  onSaveLocationTitle(){
+    alert('dfsfsfsdf');
+    console.log("inside edit component");
+    console.log(this.selectLocation);
+    this.editLocationData.emit(this.selectLocation);
   }
 
   onDeleteLocation(location:any ){
