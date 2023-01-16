@@ -9,7 +9,7 @@
         <img width="35" height="35" src = "./../assets/images/edit.svg" alt="logo"/>
         <span class="title">Location Properties: </span>
         <span *ngIf="showEditInput">
-          <input type="text" class="form-control" name="location-title" value="selectLocation.description" [(ngModel)]="selectLocation.description"  (keyup.enter)="onSaveLocationTitle()" >
+          <input style="width: 50%; display: inline-block" type="text" class="form-control" name="location-title" value="selectLocation.description" [(ngModel)]="selectLocation.description"  (keyup.enter)="onSaveLocationTitle()" >
         </span>
         <span (click)="allowEditLocationTitle()" *ngIf="!showEditInput">
           {{selectLocation.description}}

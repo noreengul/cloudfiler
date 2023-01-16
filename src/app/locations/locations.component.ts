@@ -10,6 +10,7 @@ import {GroupService} from "../shared/group.service";
   templateUrl: './locations.component.html',
   styleUrls: ['./locations.component.css'],
 })
+
 export class LocationsComponent implements OnInit {
 
   searchTerm:any;
@@ -21,7 +22,6 @@ export class LocationsComponent implements OnInit {
   groups !: Group[];
   constructor( private locationService:LocationService,private groupService:GroupService) {
 
-    console.log('aaaaaaaaaaaaaaaaaa');
   }
 
   ngOnInit(): void {
@@ -32,16 +32,6 @@ export class LocationsComponent implements OnInit {
       });
 
       this.groups = this.groupService.getGroups();
-
-     //this.getData();
-
-     /* console.log("bbbbbbbbbbb");
-      console.log(this.locations);
-      this.locations = this.locationService.getLocations();
-      this.groups = this.groupService.getGroups();
-      console.log('test');
-      console.log( this.locations);
-      this.selectLocation='';*/
   }
 
   deleteLocation(selectedIndex:number){
@@ -65,21 +55,15 @@ export class LocationsComponent implements OnInit {
 
   updateLocation(Location:any){
 
-    //this.selectLocation=this.locations[selectedIndex];
-    console.log('test values');
-    console.log(Location);
-    //this.locationService.deleteLocation(this.selectLocation.id).subscribe(locations => {
-      //this.locations.splice(selectedIndex, 1);
-   // });
+    this.locationService.updateLocation(Location).subscribe(locations => {
+      this.locationService.getLocations().subscribe(locations => {
+        this.locations = locations.results;
+        this.totalLocations=locations.total;
+      });
+    });
   }
 
+  search(value:string){
 
-
-search(value:string){
-
-//this.locations = this.locationService.getLocations();
-//this.locations = this.locations.filter((locationData:any) =>
-   // locationData.description.toLowerCase().includes(value)
-//);
-}
+  }
 }

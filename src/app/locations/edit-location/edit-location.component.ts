@@ -45,16 +45,13 @@ export class EditLocationComponent implements OnInit {
   }
 
   allowEditLocationTitle(){
-    alert('fsfsdf');
-    alert(this.selectLocation.description);
     this.showEditInput=true;
   }
 
   onSaveLocationTitle(){
-    alert('dfsfsfsdf');
-    console.log("inside edit component");
-    console.log(this.selectLocation);
+
     this.editLocationData.emit(this.selectLocation);
+    this.showEditInput=false;
   }
 
   onDeleteLocation(location:any ){
@@ -67,12 +64,18 @@ export class EditLocationComponent implements OnInit {
   }
 
   checked(){
+
     (<HTMLInputElement>document.getElementById("checked")).style.display='none';
+    this.selectLocation.type=0;
+    this.editLocationData.emit(this.selectLocation);
     (<HTMLInputElement>document.getElementById("unchecked")).style.display='inline';
   }
 
   unchecked(){
+
     (<HTMLInputElement>document.getElementById("unchecked")).style.display='none';
+    this.selectLocation.type=1;
+    this.editLocationData.emit(this.selectLocation);
     (<HTMLInputElement>document.getElementById("checked")).style.display='inline';
 
   }
