@@ -22,11 +22,11 @@
   <div class="modal-body">
     <div class="row edit-model-line">
       <div class="col-md-4 col-xs-4"><img width="30" height="30" src = "./../assets/images/refresh.svg" alt="logo"/><span class="text-title">Sync sites</span> </div>
-      <div class="col-md-8 col-xs-4"><app-path-location></app-path-location> </div>
+      <div class="col-md-8 col-xs-4"><app-path-location [selectLocation]="selectLocation" [selectedIndex]="selectedIndex" (LocationFile)="saveLocationFile($event)"></app-path-location> </div>
     </div>
     <div class="row edit-model-line">
       <div class="col-md-4 col-xs-4" > <img width="30" height="30" src = "./../assets/images/sub-folder.svg" alt="logo"/><span class="text-title">Sub Locations </span></div>
-      <div class="col-md-8 col-xs-4"> <button class="btn  edit_model_button">View/Edit Sub-locations</button></div>
+      <div class="col-md-8 col-xs-4"> <button class="btn  edit_model_button" (click)="openSmallModel(modalImplement)">View/Edit Sub-locations</button></div>
     </div>
     <div class="row edit-model-line">
       <div class="col-md-4 col-xs-4"><img width="30" height="30" src = "./../assets/images/eye.svg" alt="logo"/><span class="text-title">Who has access</span></div>
@@ -46,8 +46,8 @@
     </div>
     <div class="row edit-model-line">
       <div class="col-md-4 col-xs-4  ">
-        <img  id="checked" (click)="checked()" width="30" height="30" src = "./../assets/images/toggle-on.svg" alt="logo" style="display: none;"/>
-        <img id="unchecked" (click)="unchecked()" width="30" height="30" src = "./../assets/images/toggle-off.svg" alt="logo" />
+        <img  id="checked" (click)="setUnArchive()" width="30" height="30" src = "./../assets/images/toggle-on.svg" alt="logo" style="display: none;"/>
+        <img id="unchecked" (click)="setArchive()" width="30" height="30" src = "./../assets/images/toggle-off.svg" alt="logo" />
         <span class="text-title">Move to archive</span></div>
       <div class="col-md-8 col-xs-4"> <input  style="color: black;" type="text" value="Currently hosted in core storage" class="form-control"></div>
     </div>
@@ -67,4 +67,19 @@
 -->
   </div>
 </div>
+</ng-template>
+
+<ng-template #modalImplement let-modal  >
+  <div class="not-implemented">
+    <div class="modal-body ">
+      <div class=" row ">
+        <div class="col-md-12  ">
+          <img width="40" height="40" src = "./../assets/images/rench2.png" alt="logo" style="margin-top: -2px;"/>
+          <span style="margin-left: 10px"><b>Not yet Implemented</b></span></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-primary add-location-close"  (click)="modal.dismiss('Cross click')">Close</button>
+    </div>
+  </div>
 </ng-template>

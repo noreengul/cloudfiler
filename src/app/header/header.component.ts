@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {LocationService} from "../locations/location.service";
+import {UserService} from "../shared/user.service";
 
 @Component({
   selector: 'app-header',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService:UserService) { }
 
   ngOnInit(): void {
+    //this.userService.getUserInfo().subscribe(user => {
+
+    //});
   }
+
 
 }

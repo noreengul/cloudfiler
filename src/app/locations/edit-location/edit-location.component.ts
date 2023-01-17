@@ -18,6 +18,7 @@ export class EditLocationComponent implements OnInit {
   @Output() editLocationData = new EventEmitter<string>();
   constructor(private modalService: NgbModal,private locationService:LocationService) {
 
+
   }
 
   ngOnInit(): void {
@@ -27,6 +28,25 @@ export class EditLocationComponent implements OnInit {
   open(content:any) {
 
     this.modalService.open(content, {size: 'lg', backdrop: 'static' ,ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
+      this.closeModal = `Closed with: ${res}`;
+    }, (res) => {
+      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
+    });
+
+    if(this.selectLocation.type){
+
+      (<HTMLInputElement>document.getElementById("checked")).style.display='inline';
+      (<HTMLInputElement>document.getElementById("unchecked")).style.display='none';
+    }else{
+
+      (<HTMLInputElement>document.getElementById("checked")).style.display='none';
+      (<HTMLInputElement>document.getElementById("unchecked")).style.display='inline';
+    }
+  }
+
+  openSmallModel(content:any) {
+
+    this.modalService.open(content, { size: 'sm', backdrop: 'static' ,ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
       this.closeModal = `Closed with: ${res}`;
     }, (res) => {
       this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
@@ -45,6 +65,7 @@ export class EditLocationComponent implements OnInit {
   }
 
   allowEditLocationTitle(){
+
     this.showEditInput=true;
   }
 
@@ -63,20 +84,44 @@ export class EditLocationComponent implements OnInit {
     }
   }
 
-  checked(){
+  setArchive(){
 
-    (<HTMLInputElement>document.getElementById("checked")).style.display='none';
-    this.selectLocation.type=0;
-    this.editLocationData.emit(this.selectLocation);
-    (<HTMLInputElement>document.getElementById("unchecked")).style.display='inline';
+    if(window.confirm('Are sure you want to archive this location?')){
+
+      (<HTMLInputElement>document.getElementById("unchecked")).style.display = 'none';
+      this.selectLocation.type = 1;
+      this.editLocationData.emit(this.selectLocation);
+      (<HTMLInputElement>document.getElementById("checked")).style.display = 'inline';
+
+    }else{
+
+      (<HTMLInputElement>document.getElementById("unchecked")).style.display = 'inline';
+      (<HTMLInputElement>document.getElementById("checked")).style.display = 'none';
+
+    }
+
   }
 
-  unchecked(){
+  setUnArchive(){
 
-    (<HTMLInputElement>document.getElementById("unchecked")).style.display='none';
-    this.selectLocation.type=1;
-    this.editLocationData.emit(this.selectLocation);
-    (<HTMLInputElement>document.getElementById("checked")).style.display='inline';
+      if(window.confirm('Are sure you want to unarchive this location?')) {
+
+        (<HTMLInputElement>document.getElementById("checked")).style.display='none';
+        this.selectLocation.type=0;
+        this.editLocationData.emit(this.selectLocation);
+        (<HTMLInputElement>document.getElementById("unchecked")).style.display='inline';
+
+      }else{
+
+        (<HTMLInputElement>document.getElementById("checked")).style.display='inline';
+        (<HTMLInputElement>document.getElementById("unchecked")).style.display='none';
+      }
+  }
+
+  saveLocationFile(Location:any){
+
+      console.log("-----------file location --------");
+      console.log(Location);
 
   }
 

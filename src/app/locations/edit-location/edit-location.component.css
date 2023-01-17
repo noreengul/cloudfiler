@@ -41,5 +41,15 @@
   width: 700px !important;
 }
 
+.not-implemented .modal-footer{
+  border: unset;
+}
+
+.not-implemented .btn:active , .not-implemented .btn:focus{
+  background-image: none;
+  outline: unset;
+  box-shadow: unset;
+}
+
 
 

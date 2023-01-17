@@ -22,17 +22,17 @@
               </div>
         </div>
         <div class="row listing_paths">
-            <div class="col-md-9"> <span>\\server27\projects\J77456\email (File System) </span></div>
+            <div class="col-md-9"> <span>{{selectLocation.path}} (File System) </span></div>
             <div class="col-md-3 float-right">
                 <img width="20" class="float-right margin-left-7"  height="20" src = "./../assets/images/minus-square-grey.svg" alt="logo" (click)="openSiteModel(modalSitePathLocation)" />
-                <img width="20"  class="float-right" height="20" src = "./../assets/images/edit.svg" alt="logo"/>&nbsp;&nbsp;&nbsp;
+                <img width="20"  class="float-right" height="20" src = "./../assets/images/edit.svg" alt="logo"  />&nbsp;&nbsp;&nbsp;
             </div>
         </div>
 
         <div class="row modal-footer">
           <div class="col-md-12 ">
             <button type="button" class="btn btn-primary modal-btn  float-right "  (click)="modal.dismiss('Cross click')">Cancel</button>
-            <button type="button" class="btn btn-primary  modal-btn float-right"  (click)="modal.dismiss('Cross click')">OK</button>
+            <button type="button" class="btn btn-primary  modal-btn float-right"   (click)="SaveLocationFile()"  >OK</button>
           </div>
         </div>
 
@@ -60,13 +60,12 @@
         <div class="row modal-footer">
             <div class="col-md-12">
                 <span>Path</span>
-                <input type="text" name="search" class="form-control  browser-input"  placeholder="Share Point"  value="\\server27\projects\Singapore\JO665 - Bay View" >
+                <input type="text" name="search" class="form-control  browser-input"  placeholder="Share Point"  value="{{systemFileName}}" >
                 <label class="btn custom-file-upload">
-                  <input type="file" class="browser-file"/>
+                  <input type="file" (change)="uploadSystemFile($event)" name="file" class="browser-file" />
                   Browser
                 </label>
             </div>
-
         </div>
 
         <div class="row  ">
@@ -83,11 +82,11 @@
         <div class="row modal-footer">
             <div class="col-md-12 ">
                 <button type="button" class="btn btn-primary modal-btn  float-right "  (click)="modal.dismiss('Cross click')">Cancel</button>
-                <button type="button" class="btn btn-primary  modal-btn float-right"  (click)="modal.dismiss('Cross click')">Add</button>
+                <button type="button" class="btn btn-primary  modal-btn float-right"  (click)="AddSystemFile()">Add</button>
             </div>
         </div>
-
     </div>
+
   </div>
 
 </ng-template>
