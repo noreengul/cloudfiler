@@ -1,4 +1,4 @@
-<span  (click)="open(modalDataEdit)" >{{selectLocation.description}} <img  *ngIf="!selectLocation.type" width="20" height="20" src = "./../assets/images/edit.svg" alt="logo" style="margin-left: 10px;"/></span>
+<span  (click)="open(modalDataEdit)" >{{selectedLocation.description}} <img  *ngIf="!selectedLocation.type" width="20" height="20" src = "./../assets/images/edit.svg" alt="logo" style="margin-left: 10px;"/></span>
 
 <ng-template #modalDataEdit let-modal  >
 <div class="edit_row">
@@ -9,12 +9,14 @@
         <img width="35" height="35" src = "./../assets/images/edit.svg" alt="logo"/>
         <span class="title">Location Properties: </span>
         <span *ngIf="showEditInput">
-          <input style="width: 50%; display: inline-block" type="text" class="form-control" name="location-title" value="selectLocation.description" [(ngModel)]="selectLocation.description"  (keyup.enter)="onSaveLocationTitle()" >
+          <input style="width: 50%; display: inline-block" type="text" class="form-control" name="location-title" value="selectedLocation.description" [(ngModel)]="selectedLocation.description"  (keyup.enter)="onSaveLocationTitle()" >
         </span>
         <span (click)="allowEditLocationTitle()" *ngIf="!showEditInput">
-          {{selectLocation.description}}
+          {{selectedLocation.description}}
         </span>
-        <img class="float-right " width="28" height="28" src = "./../assets/images/Help-black.svg" alt="logo" />
+        <a  target="_blank" href="https://help.cloudfiler.io/">
+          <img class="float-right " width="28" height="28" src = "./../assets/images/Help-black.svg" alt="help" />
+        </a>
       </div>
     </div>
   </div>
@@ -22,7 +24,7 @@
   <div class="modal-body">
     <div class="row edit-model-line">
       <div class="col-md-4 col-xs-4"><img width="30" height="30" src = "./../assets/images/refresh.svg" alt="logo"/><span class="text-title">Sync sites</span> </div>
-      <div class="col-md-8 col-xs-4"><app-path-location [selectLocation]="selectLocation" [selectedIndex]="selectedIndex" (LocationFile)="saveLocationFile($event)"></app-path-location> </div>
+      <div class="col-md-8 col-xs-4"><app-path-location [ActionLocation]="selectedLocation" [selectedIndex]="selectedIndex" (LocationFile)="saveLocationFile($event)"></app-path-location> </div>
     </div>
     <div class="row edit-model-line">
       <div class="col-md-4 col-xs-4" > <img width="30" height="30" src = "./../assets/images/sub-folder.svg" alt="logo"/><span class="text-title">Sub Locations </span></div>
@@ -38,7 +40,7 @@
     </div>
     <div class="row edit-model-line">
       <div class="col-md-4 col-xs-4"><img width="30" height="30" src = "./../assets/images/arrow-right.svg" alt="logo"/><span class="text-title">AutoFile alias</span></div>
-      <div class="col-md-8 col-xs-4">  <input  style="color: black;" type="text" value="{{selectLocation.description}}" class="form-control"></div>
+      <div class="col-md-8 col-xs-4">  <input  style="color: black;" type="text" value="{{selectedLocation.description}}" class="form-control"></div>
     </div>
     <div class="row edit-model-line">
       <div class="col-md-5 col-xs-4"  style="margin-left: 35px;"  >Emails copied to this address will be automatically filed </div>

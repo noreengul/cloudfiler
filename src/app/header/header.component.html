@@ -11,15 +11,16 @@
         <ul class="nav navbar-nav  mr-auto middle_nav">
           <li  class="nav-item  "><a href="#"  ><h4 class="setting"><img width="40" height="40" src = "./../assets/images/cog.svg" alt="logo"/> <span style=" opacity: 0.5;"> Settings & Administration </span></h4> </a></li>
         </ul>
+
         <ul class="nav navbar-nav navbar-right header-right-db">
-          <li class="dropdown" >
-            <a  class="dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"> joe.sachmo@business.com <img width="20" height="20" src = "./../assets/images/combo-arrow.svg" alt="logo"/></a>
+          <li class="dropdown show-data" >
+            <a  class="dropdown-toggle user-email" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"  > {{this.userDropDownData.email}} <img width="20" height="20" src = "./../assets/images/combo-arrow.svg" alt="logo"/></a>
             <ul class="dropdown-menu " id="testDropdown">
-              <li><a href="#">Save Data</a></li>
-              <li><a href="#">Fetch Data</a></li>
+              <li><a href="#">Logout</a></li>
             </ul>
           </li>
         </ul>
+
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>

@@ -7,19 +7,19 @@ import {map} from "rxjs/operators";
 })
 export class UserService {
 
-  private APP_URL = 'https://api-test.cloudfiler.io/users';
+  private APP_URL = 'https://api-test.cloudfiler.io/user';
   private token = "Bearer  a5618824-8381-4394-ae42-dc9974e67091";
   constructor(private http:HttpClient  ) { }
 
   getUserInfo(){
 
-    /*return this.http.get ( this.APP_URL , {
+    return this.http.get ( this.APP_URL , {
       headers: {  "Authorization": this.token}
     }).
     pipe(
       map( (responseData:any) => {
         return   responseData;
       })
-    );*/
+    );
   }
 }

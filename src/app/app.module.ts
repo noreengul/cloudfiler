@@ -25,8 +25,8 @@ import { PathLocationComponent } from './locations/edit-location/path-location/p
       AccountsComponent,
       AddLocationComponent,
       EditLocationComponent,
-      PathLocationComponent
-  ],
+      PathLocationComponent,
+   ],
   imports: [
       BrowserModule,
       AppRoutingModule,

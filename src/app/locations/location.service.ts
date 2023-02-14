@@ -17,7 +17,7 @@ export class LocationService{
     private token = "Bearer  a5618824-8381-4394-ae42-dc9974e67091";
     getLocations(){
 
-        return this.http.get ( this.APP_URL , {
+        return this.http.get ( this.APP_URL +'/access', {
             headers: {  "Authorization": this.token}
         }).
         pipe(
@@ -25,8 +25,7 @@ export class LocationService{
                 return   responseData;
             })
         );
-   }
-
+    }
     addLocation(newLocation : string){
 
         const body =  ({ description: newLocation,sync_path:'' });
@@ -48,4 +47,16 @@ export class LocationService{
             headers: {  "Authorization": this.token }
         });
     }
+
+   getLocation(id:string){
+
+    return this.http.get ( this.APP_URL+'/'+id , {
+      headers: {  "Authorization": this.token}
+    }).
+    pipe(
+      map( (responseData:any) => {
+        return   responseData;
+      })
+    );
+   }
 }

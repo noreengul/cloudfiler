@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ModalDismissReasons, NgbModal} from "@ng-bootstrap/ng-bootstrap";
+import {ModalDismissReasons, NgbModal , NgbModalRef } from "@ng-bootstrap/ng-bootstrap";
 import {LocationService} from "../../location.service";
 
 @Component({
@@ -9,23 +9,26 @@ import {LocationService} from "../../location.service";
 })
 export class PathLocationComponent implements OnInit {
 
-  @Input() selectLocation: any;
   @Input() selectedIndex: any;
   closeModal='';
   systemFile= '';
   systemFileName='';
+  LocationPathInfo: any;
+  modalSynPathRef : any;
+  mainModelRef : any;
   @Output() LocationFile = new EventEmitter<string>();
+  @Input() ActionLocation: any;
   constructor(private modalService: NgbModal,private locationService:LocationService) { }
 
   ngOnInit(): void {
+    this.passLocation(this.ActionLocation.id);
   }
   open(content:any) {
-    this.modalService.open(content, {   windowClass: 'site_model_class',  backdrop: 'static' ,ariaLabelledBy: 'modal-site-location'}).result.then((res) => {
-      this.closeModal = `Closed with: ${res}`;
-
-    }, (res) => {
-      this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
-    });
+    console.log(this.ActionLocation);
+    console.log("bbbbbbbbbbbb");
+    console.log(this.ActionLocation);
+    this.passLocation(this.ActionLocation.id);
+    this.mainModelRef =this.modalService.open(content, {   windowClass: 'site_model_class',  backdrop: 'static' ,ariaLabelledBy: 'modal-site-location'});
   }
 
   private getDismissReason(reason: any): string {
@@ -41,12 +44,18 @@ export class PathLocationComponent implements OnInit {
 
   openSiteModel(content:any) {
 
-      this.modalService.open(content, {   windowClass: 'site_path_model',  backdrop: 'static' ,ariaLabelledBy: 'modal-site-path'}).result.then((res) => {
-          this.closeModal = `Closed with: ${res}`;
-
-      }, (res) => {
-          this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
-      });
+      this.modalSynPathRef = this.modalService.open(content, {  windowClass: 'site_path_model',  backdrop: 'static' ,ariaLabelledBy: 'modal-site-path' });
+    // this.modalReference = this.modalService.open(content, {   windowClass: 'site_path_model',  backdrop: 'static' ,ariaLabelledBy: 'modal-site-path'});
+    // this.modalReference.result.then((result) => {
+    //   this.closeModal = `Closed with: ${result}`;
+    // }, (reason) => {
+    //   this.closeModal = `Dismissed ${this.getDismissReason(reason)}`;
+    // });
+    //this.PathModel = this.modalService.open(content, {   windowClass: 'site_path_model',  backdrop: 'static' ,ariaLabelledBy: 'modal-site-path'}).result.then((res) => {
+    //   this.closeModal = `Closed with: ${res}`;
+    //}, (res) => {
+    //  this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
+     //});
   }
 
   uploadSystemFile(event:any){
@@ -58,14 +67,30 @@ export class PathLocationComponent implements OnInit {
   }
 
   AddSystemFile(){
-    this.modalService.dismissAll();
+
+    console.log("2222222222222222");
+    console.log( this.LocationPathInfo);
+    this.modalSynPathRef.close();
   }
 
   SaveLocationFile(){
 
-    if(this.systemFile !=''){
-      this.LocationFile.emit( this.systemFile );
+    console.log("ddddddd");
+    console.log( this.LocationPathInfo );
+
+    if(this.LocationPathInfo.path !=''){
+      this.LocationFile.emit( this.LocationPathInfo );
     }
+
+    this.mainModelRef.close();
   }
+
+  passLocation(id:string){
+
+    this.locationService.getLocation( id).subscribe(location => {
+      this.LocationPathInfo = location;
+    });
+  }
+
 
 }

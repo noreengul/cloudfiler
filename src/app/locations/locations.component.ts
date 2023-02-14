@@ -14,7 +14,7 @@ import {GroupService} from "../shared/group.service";
 export class LocationsComponent implements OnInit {
 
   searchTerm:any;
-  selectLocation:any;
+  openLocation:any;
   locations !: any;
   totalLocations !: any;
 
@@ -31,13 +31,16 @@ export class LocationsComponent implements OnInit {
           this.totalLocations=locations.total;
       });
 
-      this.groups = this.groupService.getGroups();
+      this.groupService.getGroups().subscribe(groups => {
+         this.groups = groups.results;
+
+      });
   }
 
   deleteLocation(selectedIndex:number){
 
-    this.selectLocation=this.locations[selectedIndex];
-    this.locationService.deleteLocation(this.selectLocation.id).subscribe(locations => {
+    this.openLocation=this.locations[selectedIndex];
+    this.locationService.deleteLocation(this.openLocation.id).subscribe(locations => {
       this.locations.splice(selectedIndex, 1);
     });
   }

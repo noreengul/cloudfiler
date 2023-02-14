@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {LocationService} from "../locations/location.service";
 import {UserService} from "../shared/user.service";
 
@@ -9,13 +9,12 @@ import {UserService} from "../shared/user.service";
 })
 export class HeaderComponent implements OnInit {
 
+  @Input() userDropDownData: any;
   constructor(private userService:UserService) { }
 
   ngOnInit(): void {
-    //this.userService.getUserInfo().subscribe(user => {
-
-    //});
+     console.log("------user-----");
+    console.log(this.userDropDownData);
   }
-
 
 }

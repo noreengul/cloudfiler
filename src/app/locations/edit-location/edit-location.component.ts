@@ -12,7 +12,7 @@ export class EditLocationComponent implements OnInit {
   closeModal='';
   showEditInput=false;
 
-  @Input() selectLocation: any;
+  @Input() selectedLocation: any;
   @Input() selectedIndex: any;
   @Output() locationToEdit = new EventEmitter<string>();
   @Output() editLocationData = new EventEmitter<string>();
@@ -33,7 +33,7 @@ export class EditLocationComponent implements OnInit {
       this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
     });
 
-    if(this.selectLocation.type){
+    if(this.selectedLocation.type){
 
       (<HTMLInputElement>document.getElementById("checked")).style.display='inline';
       (<HTMLInputElement>document.getElementById("unchecked")).style.display='none';
@@ -71,7 +71,7 @@ export class EditLocationComponent implements OnInit {
 
   onSaveLocationTitle(){
 
-    this.editLocationData.emit(this.selectLocation);
+    this.editLocationData.emit(this.selectedLocation);
     this.showEditInput=false;
   }
 
@@ -89,8 +89,8 @@ export class EditLocationComponent implements OnInit {
     if(window.confirm('Are sure you want to archive this location?')){
 
       (<HTMLInputElement>document.getElementById("unchecked")).style.display = 'none';
-      this.selectLocation.type = 1;
-      this.editLocationData.emit(this.selectLocation);
+      this.selectedLocation.type = 1;
+      this.editLocationData.emit(this.selectedLocation);
       (<HTMLInputElement>document.getElementById("checked")).style.display = 'inline';
 
     }else{
@@ -107,8 +107,8 @@ export class EditLocationComponent implements OnInit {
       if(window.confirm('Are sure you want to unarchive this location?')) {
 
         (<HTMLInputElement>document.getElementById("checked")).style.display='none';
-        this.selectLocation.type=0;
-        this.editLocationData.emit(this.selectLocation);
+        this.selectedLocation.type=0;
+        this.editLocationData.emit(this.selectedLocation);
         (<HTMLInputElement>document.getElementById("unchecked")).style.display='inline';
 
       }else{

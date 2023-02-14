@@ -1,20 +1,26 @@
 import {Group} from "./group.model";
+import {map} from "rxjs/operators";
+import {HttpClient} from "@angular/common/http";
 
 export class GroupService{
 
-  private groups:Group[] = [
-    new Group(2,"My First Group",2),
-    new Group(3,"Partners",2),
-    new Group(4,"Project Managers",2),
-    new Group(5,"SysAdmin",2),
-    new Group(6,"Other Group",2),
-    new Group(7,"Staff",2),
-    new Group(8,"Legal",2),
-    new Group(1,"Main Board",2),
+  constructor(private http:HttpClient  ) { }
 
-  ];
+  private groups:any = [] ;
+
+  private APP_URL = 'https://api-test.cloudfiler.io/groups';
+  private token = "Bearer  a5618824-8381-4394-ae42-dc9974e67091";
+
+
 
   getGroups(){
-    return this.groups;
+    return this.http.get ( this.APP_URL , {
+      headers: {  "Authorization": this.token}
+    }).
+    pipe(
+      map( (responseData:any) => {
+        return   responseData;
+      })
+    );
   }
 }
