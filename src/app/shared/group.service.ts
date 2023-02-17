@@ -1,21 +1,22 @@
 import {Group} from "./group.model";
 import {map} from "rxjs/operators";
 import {HttpClient} from "@angular/common/http";
+import {Injectable} from "@angular/core";
+import {AuthService} from "./auth.sevice";
 
+@Injectable({
+  providedIn: 'root'
+})
 export class GroupService{
 
-  constructor(private http:HttpClient  ) { }
-
+  constructor( private http:HttpClient, private authService: AuthService  ) { }
   private groups:any = [] ;
-
-  private APP_URL = 'https://api-test.cloudfiler.io/groups';
-  private token = "Bearer  a5618824-8381-4394-ae42-dc9974e67091";
-
-
+  APP_URL = this.authService.getBaseURl();
+  Token =  this.authService.getToken();
 
   getGroups(){
-    return this.http.get ( this.APP_URL , {
-      headers: {  "Authorization": this.token}
+    return this.http.get ( this.APP_URL +'groups' , {
+      headers: {  "Authorization": this.Token}
     }).
     pipe(
       map( (responseData:any) => {

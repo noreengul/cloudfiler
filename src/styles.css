@@ -261,3 +261,7 @@ input:checked + .location_label {
   margin-left: 5px;
 }
 
+.permission-class{
+  text-transform: capitalize;
+}
+

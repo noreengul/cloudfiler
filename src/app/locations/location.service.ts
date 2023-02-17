@@ -3,21 +3,20 @@ import { map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 
 import {HttpClient} from "@angular/common/http";
+import {AuthService} from "../shared/auth.sevice";
 
 @Injectable({
   providedIn: 'root'
 })
 export class LocationService{
 
-    constructor(private http:HttpClient  ) { }
-
+    constructor(private http:HttpClient  , private authService: AuthService   ) { }
     private  locations:any;
-
-    private APP_URL = 'https://api-test.cloudfiler.io/locations';
-    private token = "Bearer  a5618824-8381-4394-ae42-dc9974e67091";
+    APP_URL = this.authService.getBaseURl();
+    token =  this.authService.getToken();
     getLocations(){
 
-        return this.http.get ( this.APP_URL +'/access', {
+        return this.http.get ( this.APP_URL +'locations/access?all_groups=true', {
             headers: {  "Authorization": this.token}
         }).
         pipe(
@@ -30,27 +29,27 @@ export class LocationService{
 
         const body =  ({ description: newLocation,sync_path:'' });
 
-        return this.http.post( this.APP_URL ,  (body),{
+        return this.http.post( this.APP_URL +'locations',  (body),{
             headers: { "Authorization": this.token }
         });
    }
     updateLocation(location:any){
 
-        return this.http.put(this.APP_URL+ '/'+location.id,location,{
+        return this.http.put(this.APP_URL+ 'locations/'+location.id,location,{
             headers: {  "Authorization": this.token }
         });
     }
 
     deleteLocation(id:string){
 
-        return this.http.delete( this.APP_URL+'/'+id,{
+        return this.http.delete( this.APP_URL+'locations/'+id,{
             headers: {  "Authorization": this.token }
         });
     }
 
    getLocation(id:string){
 
-    return this.http.get ( this.APP_URL+'/'+id , {
+    return this.http.get ( this.APP_URL+'locations/'+id , {
       headers: {  "Authorization": this.token}
     }).
     pipe(

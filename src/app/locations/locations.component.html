@@ -25,26 +25,21 @@
           <thead>
               <tr>
                   <th  class="header first_cell" scope="col"></th>
-                  <th  class="header" scope="col" *ngFor="let group of groups.slice().reverse() ">{{group.description}}</th>
+                  <th  class="header" scope="col" *ngFor="let group of groups ">{{group.description}}</th>
               </tr>
           </thead>
           <tbody *ngIf="totalLocations>0" >
-              <tr *ngFor="let location of locations;let i = index;" >
-
-                  <td *ngIf="!location.type" class="first_cell" [ngClass]="{'edit_location':  !location.type }"  id="location_{{i}}">
-
+              <tr>
+                <td><b>Default Access Rights</b></td>
+                <td *ngFor="let group of groups"  class="permission-class"></td>
+              </tr>
+              <tr *ngFor="let location of locations; let i = index;" >
+                  <td  class="first_cell" [ngClass]="{'edit_location':  !location.type }"  id="location_{{i}}">
                     <app-edit-location   [selectedLocation]="location" [selectedIndex]="i"  (locationToEdit)="deleteLocation(i)" (editLocationData)="updateLocation($event)"></app-edit-location>
                   </td>
-                  <td *ngIf="location.type" class="first_cell" >{{location.description}}</td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td></td>
-                  <td>Admin</td>
-                  <td></td>
-                  <td>User</td>
-
+                  <td *ngFor="let group of location.groups.sort()"  class="permission-class">
+                     {{  group.permission=='none'?'':  group.permission }}
+                  </td>
               </tr>
           </tbody>
           <tbody *ngIf="totalLocations==0">

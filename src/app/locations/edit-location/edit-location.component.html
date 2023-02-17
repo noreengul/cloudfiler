@@ -1,6 +1,7 @@
 <span  (click)="open(modalDataEdit)" >{{selectedLocation.description}} <img  *ngIf="!selectedLocation.type" width="20" height="20" src = "./../assets/images/edit.svg" alt="logo" style="margin-left: 10px;"/></span>
 
 <ng-template #modalDataEdit let-modal  >
+
 <div class="edit_row">
 
   <div class="modal-header" style="border-bottom:unset">
@@ -8,11 +9,12 @@
       <div class="col-md-12 head">
         <img width="35" height="35" src = "./../assets/images/edit.svg" alt="logo"/>
         <span class="title">Location Properties: </span>
+        <div>{{ selectedLocation.description }}</div>
         <span *ngIf="showEditInput">
           <input style="width: 50%; display: inline-block" type="text" class="form-control" name="location-title" value="selectedLocation.description" [(ngModel)]="selectedLocation.description"  (keyup.enter)="onSaveLocationTitle()" >
         </span>
         <span (click)="allowEditLocationTitle()" *ngIf="!showEditInput">
-          {{selectedLocation.description}}
+          {{ selectedLocation.description }}
         </span>
         <a  target="_blank" href="https://help.cloudfiler.io/">
           <img class="float-right " width="28" height="28" src = "./../assets/images/Help-black.svg" alt="help" />
@@ -64,18 +66,16 @@
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-primary add-location-close"  (click)="modal.dismiss('Cross click')">Close</button>
-<!--
-    <button type="button" class="btn btn-primary add-location-close"   (click)="_sendDataToParent(selectLocation)" >Test</button>
--->
+    <!--<button type="button" class="btn btn-primary add-location-close"   (click)="_sendDataToParent(selectLocation)" >Test</button>-->
   </div>
 </div>
 </ng-template>
 
 <ng-template #modalImplement let-modal  >
   <div class="not-implemented">
-    <div class="modal-body ">
-      <div class=" row ">
-        <div class="col-md-12  ">
+    <div class="modal-body">
+      <div class="row">
+        <div class="col-md-12">
           <img width="40" height="40" src = "./../assets/images/rench2.png" alt="logo" style="margin-top: -2px;"/>
           <span style="margin-left: 10px"><b>Not yet Implemented</b></span></div>
       </div>

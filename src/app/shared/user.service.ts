@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {map} from "rxjs/operators";
+import {AuthService} from "./auth.sevice";
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  private APP_URL = 'https://api-test.cloudfiler.io/user';
-  private token = "Bearer  a5618824-8381-4394-ae42-dc9974e67091";
-  constructor(private http:HttpClient  ) { }
+  constructor(private http:HttpClient , private authService :AuthService ) { }
+  APP_URL = this.authService.getBaseURl();
+  token =  this.authService.getToken();
 
   getUserInfo(){
 
-    return this.http.get ( this.APP_URL , {
+    return this.http.get ( this.APP_URL + 'user' , {
       headers: {  "Authorization": this.token}
     }).
     pipe(

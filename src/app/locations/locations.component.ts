@@ -16,6 +16,7 @@ export class LocationsComponent implements OnInit {
   searchTerm:any;
   openLocation:any;
   locations !: any;
+  locationsPermanent !:any ;
   totalLocations !: any;
 
   isLoading!:true;
@@ -28,11 +29,14 @@ export class LocationsComponent implements OnInit {
 
       this.locationService.getLocations().subscribe(locations => {
           this.locations = locations.results;
+          this.locationsPermanent = locations.results;
           this.totalLocations=locations.total;
       });
-
+    console.log("----------------");
       this.groupService.getGroups().subscribe(groups => {
-         this.groups = groups.results;
+         this.groups = groups;
+
+         console.log(this.groups);
 
       });
   }
@@ -53,7 +57,6 @@ export class LocationsComponent implements OnInit {
            this.totalLocations=locations.total;
         });
      });
-
   }
 
   updateLocation(Location:any){
@@ -68,5 +71,22 @@ export class LocationsComponent implements OnInit {
 
   search(value:string){
 
+    if(this.locations[0].description){
+        this.locations.filter( (locationTest:any) => {
+          return locationTest.location_id==1;
+        })
+    }
+    if( value!==undefined && value!='' && value !=null) {
+      this.locations = this.locations.filter((locationData: any) =>
+        locationData.description.toLowerCase().includes(value.toLowerCase())
+      );
+    }else{
+      this.locations= this.locationsPermanent;
+    }
+  }
+
+  filterGroups(groups:any  ) : any {
+
+    //return groups.map((groupData:any)=>{ if(groupData.group_id  === group_id) return groupData.permission })
   }
 }
