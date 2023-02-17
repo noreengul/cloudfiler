@@ -25,6 +25,18 @@ export class LocationService{
             })
         );
     }
+
+  getAccessLocations(){
+
+    return this.http.get ( this.APP_URL +'locations/access', {
+      headers: {  "Authorization": this.token}
+    }).
+    pipe(
+      map( (responseData:any) => {
+        return   responseData;
+      })
+    );
+  }
     addLocation(newLocation : string){
 
         const body =  ({ description: newLocation,sync_path:'' });

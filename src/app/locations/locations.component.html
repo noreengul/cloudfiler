@@ -9,7 +9,7 @@
   <div class="col-md-4  ">
   </div>
   <div class="col-md-1  ">
-    <a  target="_blank" href="https://help.cloudfiler.io/"><img   class="float-right " width="40" height="40" src = "./../assets/images/Help-black.svg" alt="help" /></a>
+    <a  target="_blank" href="https://help.cloudfiler.io/"><img   class="float-right help_image " width="40" height="40" src = "./../assets/images/Help-black.svg" alt="help" /></a>
   </div>
 </div>
 <div class="row" style="margin-top:20px;margin-bottom: 20px;">
@@ -28,13 +28,13 @@
                   <th  class="header" scope="col" *ngFor="let group of groups ">{{group.description}}</th>
               </tr>
           </thead>
-          <tbody *ngIf="totalLocations>0" >
+          <tbody *ngIf="totalLocations > 0" >
               <tr>
                 <td><b>Default Access Rights</b></td>
                 <td *ngFor="let group of groups"  class="permission-class"></td>
               </tr>
-              <tr *ngFor="let location of locations; let i = index;" >
-                  <td  class="first_cell" [ngClass]="{'edit_location':  !location.type }"  id="location_{{i}}">
+              <tr *ngFor="let location of locations; let i = index;"   [ngClass]="{'edit_tr':  clickLocation==i }">
+                  <td  class="first_cell"   [ngClass]="{'edit_location':  clickLocation==i }"  (click)="editLocation(i)" id="location_{{i}}">
                     <app-edit-location   [selectedLocation]="location" [selectedIndex]="i"  (locationToEdit)="deleteLocation(i)" (editLocationData)="updateLocation($event)"></app-edit-location>
                   </td>
                   <td *ngFor="let group of location.groups.sort()"  class="permission-class">
@@ -51,7 +51,7 @@
     </div>
 </div>
 
-<div class="row">
+<div class="row" >
   <div class="col-md-12  ">
       <app-add-location   (locationToAdd)="addLocation($event)"></app-add-location>
   </div>

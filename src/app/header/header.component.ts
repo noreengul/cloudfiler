@@ -9,12 +9,18 @@ import {UserService} from "../shared/user.service";
 })
 export class HeaderComponent implements OnInit {
 
-  @Input() userDropDownData: any;
+  userDetail: any ;
   constructor(private userService:UserService) { }
 
   ngOnInit(): void {
-     console.log("------user-----");
-    console.log(this.userDropDownData);
+    console.log("------user header-----");
+    console.log(this.userDetail);
+    this.userService.getUserInfo().subscribe(user => {
+      console.log("-------app--------");
+      console.log(user);
+      this.userDetail = user ;
+      this.userService.updateUserData(user);
+    });
   }
 
 }

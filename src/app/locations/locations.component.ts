@@ -1,4 +1,4 @@
-import {Component, Injectable, OnInit} from '@angular/core';
+import {Component, Injectable, Input, OnInit} from '@angular/core';
 
 import  {Location} from "./location.model";
 import {LocationService} from "./location.service";
@@ -21,6 +21,9 @@ export class LocationsComponent implements OnInit {
 
   isLoading!:true;
   groups !: Group[];
+
+  clickLocation:any;
+
   constructor( private locationService:LocationService,private groupService:GroupService) {
 
   }
@@ -32,12 +35,8 @@ export class LocationsComponent implements OnInit {
           this.locationsPermanent = locations.results;
           this.totalLocations=locations.total;
       });
-    console.log("----------------");
       this.groupService.getGroups().subscribe(groups => {
          this.groups = groups;
-
-         console.log(this.groups);
-
       });
   }
 
@@ -85,8 +84,8 @@ export class LocationsComponent implements OnInit {
     }
   }
 
-  filterGroups(groups:any  ) : any {
+  editLocation(index:any){
+      this.clickLocation = index;
 
-    //return groups.map((groupData:any)=>{ if(groupData.group_id  === group_id) return groupData.permission })
   }
 }

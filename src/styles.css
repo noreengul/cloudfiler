@@ -265,3 +265,10 @@ input:checked + .location_label {
   text-transform: capitalize;
 }
 
+.help_image:active , .help_image:focus , .help_image:focus-visible{
+
+  border-color: white !important;
+}
+
+
+

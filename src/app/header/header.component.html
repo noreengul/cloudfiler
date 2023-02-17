@@ -14,7 +14,7 @@
 
         <ul class="nav navbar-nav navbar-right header-right-db">
           <li class="dropdown show-data" >
-            <a  class="dropdown-toggle user-email" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"  > {{this.userDropDownData.email}} <img width="20" height="20" src = "./../assets/images/combo-arrow.svg" alt="logo"/></a>
+            <a  class="dropdown-toggle user-email" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"  > {{this.userDetail?this.userDetail.email:''}} <img width="20" height="20" src = "./../assets/images/combo-arrow.svg" alt="logo"/></a>
             <ul class="dropdown-menu " id="testDropdown">
               <li><a href="#">Logout</a></li>
             </ul>

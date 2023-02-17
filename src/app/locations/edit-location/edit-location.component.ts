@@ -11,7 +11,7 @@ import {LocationService} from "../location.service";
 export class EditLocationComponent implements OnInit {
   closeModal='';
   showEditInput=false;
-
+  purpleLocation: boolean = false
   @Input() selectedLocation: any;
   @Input() selectedIndex: any;
   @Output() locationToEdit = new EventEmitter<string>();
@@ -125,4 +125,8 @@ export class EditLocationComponent implements OnInit {
 
   }
 
+  highlightLocation(){
+    this.purpleLocation=false;
+    this.purpleLocation=true;
+  }
 }

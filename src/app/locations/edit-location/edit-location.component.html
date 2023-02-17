@@ -1,4 +1,6 @@
-<span  (click)="open(modalDataEdit)" >{{selectedLocation.description}} <img  *ngIf="!selectedLocation.type" width="20" height="20" src = "./../assets/images/edit.svg" alt="logo" style="margin-left: 10px;"/></span>
+<span  (click)="highlightLocation()"  [ngClass]="purpleLocation ? 'success' : 'danger'">
+  {{selectedLocation.description}}
+  <img  *ngIf="!selectedLocation.type" width="20" height="20" src = "./../assets/images/edit.svg" alt="logo" style="margin-left: 10px;" (click)="open(modalDataEdit)"/></span>
 
 <ng-template #modalDataEdit let-modal  >
 
@@ -9,15 +11,15 @@
       <div class="col-md-12 head">
         <img width="35" height="35" src = "./../assets/images/edit.svg" alt="logo"/>
         <span class="title">Location Properties: </span>
-        <div>{{ selectedLocation.description }}</div>
+        <span>{{ selectedLocation.description }}</span>
         <span *ngIf="showEditInput">
           <input style="width: 50%; display: inline-block" type="text" class="form-control" name="location-title" value="selectedLocation.description" [(ngModel)]="selectedLocation.description"  (keyup.enter)="onSaveLocationTitle()" >
         </span>
         <span (click)="allowEditLocationTitle()" *ngIf="!showEditInput">
-          {{ selectedLocation.description }}
+         <!-- {{ selectedLocation.description }}-->
         </span>
         <a  target="_blank" href="https://help.cloudfiler.io/">
-          <img class="float-right " width="28" height="28" src = "./../assets/images/Help-black.svg" alt="help" />
+          <img class="float-right  help_image" width="28" height="28" src = "./../assets/images/Help-black.svg" alt="help" />
         </a>
       </div>
     </div>

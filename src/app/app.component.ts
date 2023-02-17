@@ -10,22 +10,14 @@ import {UserService} from "./shared/user.service";
 })
 export class AppComponent {
   title = 'cloudfiler';
-  userInfo = '';
 
-  constructor( private userService:UserService) {
+
+  constructor( ) {
 
   }
   ngOnInit(): void {
 
-    this.userService.getUserInfo().subscribe(user => {
-      console.log("---------------");
-      console.log(user);
-      this.userInfo = user ;
 
-    });
   }
-
-
-
 }
 
