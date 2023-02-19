@@ -13,8 +13,10 @@ import { FormsModule } from "@angular/forms";
 import { LocationService } from "./locations/location.service";
 import { GroupService } from "./shared/group.service";
 import { EditLocationComponent } from './locations/edit-location/edit-location.component';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule , HTTP_INTERCEPTORS } from "@angular/common/http";
 import { PathLocationComponent } from './locations/edit-location/path-location/path-location.component';
+import { SpinnerComponent } from './spinner/spinner.component';
+import { LoadingInterceptor } from './loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,6 +28,7 @@ import { PathLocationComponent } from './locations/edit-location/path-location/p
       AddLocationComponent,
       EditLocationComponent,
       PathLocationComponent,
+      SpinnerComponent,
    ],
   imports: [
       BrowserModule,
@@ -34,7 +37,9 @@ import { PathLocationComponent } from './locations/edit-location/path-location/p
       FormsModule,
       HttpClientModule
   ],
-  providers: [LocationService,GroupService],
+  providers: [LocationService,GroupService,{
+    provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

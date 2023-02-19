@@ -1,6 +1,6 @@
 <span  (click)="highlightLocation()"  [ngClass]="purpleLocation ? 'success' : 'danger'">
   {{selectedLocation.description}}
-  <img  *ngIf="!selectedLocation.type" width="20" height="20" src = "./../assets/images/edit.svg" alt="logo" style="margin-left: 10px;" (click)="open(modalDataEdit)"/></span>
+  <img  *ngIf="purpleLocation" width="20" height="20" src = "./../assets/images/edit.svg" alt="logo" style="margin-left: 10px;" (click)="open(modalDataEdit)"/></span>
 
 <ng-template #modalDataEdit let-modal  >
 
@@ -16,7 +16,7 @@
           <input style="width: 50%; display: inline-block" type="text" class="form-control" name="location-title" value="selectedLocation.description" [(ngModel)]="selectedLocation.description"  (keyup.enter)="onSaveLocationTitle()" >
         </span>
         <span (click)="allowEditLocationTitle()" *ngIf="!showEditInput">
-         <!-- {{ selectedLocation.description }}-->
+          {{ selectedLocation.description }}
         </span>
         <a  target="_blank" href="https://help.cloudfiler.io/">
           <img class="float-right  help_image" width="28" height="28" src = "./../assets/images/Help-black.svg" alt="help" />

@@ -26,9 +26,8 @@
   color:white !important;
 }
 
-.edit_location{
-  /*background-color: #D4BEE5 !important;
-  border-radius: 20px !important;*/
+.edit_location img{
+  display: inline-block;
 }
 
 tr:has(> td.edit_location) {

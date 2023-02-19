@@ -62,6 +62,7 @@ export class EditLocationComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
+    
   }
 
   allowEditLocationTitle(){
