@@ -4,6 +4,7 @@ import  {Location} from "./location.model";
 import {LocationService} from "./location.service";
 import {Group} from "../shared/group.model";
 import {GroupService} from "../shared/group.service";
+import {UserService} from "../shared/user.service";
 
 @Component({
   selector: 'app-locations',
@@ -23,10 +24,26 @@ export class LocationsComponent implements OnInit {
   groups !: Group[];
 
   clickLocation:any;
+  clickedGroup:any;
+  userInfo : any;
+  is_manager:any = false;
 
-  constructor( private locationService:LocationService,private groupService:GroupService) {
+  permissionsObj = [
+    {
+      "key" : "user",
+      "value" : "User",
+    },
+    {
+      "key" : "admin",
+      "value" : "Admin",
+    },
+    {
+      "key" : "none",
+      "value" : "None",
+    }
+    ] ;
 
-  }
+  constructor( private locationService:LocationService,private groupService:GroupService,private userService:UserService) {}
 
   ngOnInit(): void {
 
@@ -38,14 +55,47 @@ export class LocationsComponent implements OnInit {
       this.groupService.getGroups().subscribe(groups => {
          this.groups = groups;
       });
+
+      this.userService.data$.subscribe(data => {
+        this.userInfo = data;
+        this.is_manager= this.userInfo.is_manager;
+      });
+
+
   }
 
+  changeGroupPermission(permission:string, groupId: string, locationId:string ){
+
+    if(window.confirm('Are sure you want to update the group permissions?')){
+
+      this.locationService.updateGroupPermission( {
+        permission: permission,
+        groupId: groupId ,
+        locationId:locationId
+
+      }).subscribe(response => {
+
+        if(response){
+          this.locationService.getLocations().subscribe(locations => {
+            this.locations = locations.results;
+            this.totalLocations=locations.total;
+          });
+        }
+      });
+    }
+  }
+  changePermission(groupId:any){
+    if(this.is_manager){
+      this.clickedGroup = groupId;
+    }
+  }
   deleteLocation(selectedIndex:number){
 
     this.openLocation=this.locations[selectedIndex];
-    this.locationService.deleteLocation(this.openLocation.id).subscribe(locations => {
-      this.locations.splice(selectedIndex, 1);
-    });
+    this.locations.splice(selectedIndex, 1);
+    //this.locationService.deleteLocation(this.openLocation.id).subscribe(locations => {
+     // this.locations.splice(selectedIndex, 1);
+    //});
   }
 
   addLocation(newLocation : string){

@@ -7,7 +7,7 @@ import {map} from "rxjs/operators";
 })
 export class AuthService {
 
-  private BASE_URL = 'https://api-test.cloudfiler.io/';
+  private BASE_URL = 'https://api-dev.cloudfiler.io/';
   private token = "Bearer 8450b416-06e7-4dec-ae2e-52cb8166b275";
   constructor(   ) { }
 

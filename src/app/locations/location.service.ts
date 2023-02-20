@@ -26,17 +26,17 @@ export class LocationService{
         );
     }
 
-  getAccessLocations(){
+    getAccessLocations(){
 
-    return this.http.get ( this.APP_URL +'locations/access', {
-      headers: {  "Authorization": this.token}
-    }).
-    pipe(
-      map( (responseData:any) => {
-        return   responseData;
-      })
-    );
-  }
+      return this.http.get ( this.APP_URL +'locations/access', {
+        headers: {  "Authorization": this.token}
+      }).
+      pipe(
+          map( (responseData:any) => {
+            return   responseData;
+        })
+      );
+    }
     addLocation(newLocation : string){
 
         const body =  ({ description: newLocation,sync_path:'' });
@@ -70,4 +70,10 @@ export class LocationService{
       })
     );
    }
+
+  updateGroupPermission(data:any){
+    return this.http.patch( this.APP_URL+'locations/'+data.locationId+"/access"  ,({"permission":data.permission,"group_id":data.groupId}), {
+      headers: {  "Authorization": this.token}
+    });
+  }
 }

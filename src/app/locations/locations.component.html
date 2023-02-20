@@ -33,12 +33,20 @@
                 <td><b>Default Access Rights</b></td>
                 <td *ngFor="let group of groups"  class="permission-class"></td>
               </tr>
-              <tr *ngFor="let location of locations; let i = index;"   [ngClass]="{'edit_tr':  clickLocation==i }">
-                  <td  class="first_cell"   [ngClass]="{'edit_location':  clickLocation==i }"  (click)="editLocation(i)" id="location_{{i}}">
+              <tr *ngFor="let location of locations.reverse(); let i = index;"   [ngClass]="{'edit_location_tr':  clickLocation==i }" class="location_row">
+                  <td  class="first_cell"   [ngClass]="{'edit_location_td':  clickLocation==i }"  (click)="editLocation(i)" id="location_{{i}}">
                     <app-edit-location   [selectedLocation]="location" [selectedIndex]="i"  (locationToEdit)="deleteLocation(i)" (editLocationData)="updateLocation($event)"></app-edit-location>
                   </td>
-                  <td *ngFor="let group of location.groups.sort()"  class="permission-class">
-                     {{  group.permission=='none'?'':  group.permission }}
+                  <td *ngFor="let group of location.groups.sort();let groupId = index;"  class="permission-class" [ngClass]="{'permission_change': is_manager}" >
+                    <span *ngIf="groupId!=clickedGroup" (click)="changePermission(groupId)"> {{  clickLocation ==i  ?  group.permission : ( group.permission =='none'?  '':  group.permission) }}</span>
+                    <div class="btn-group test-invalid"   *ngIf=" clickLocation==i && groupId==clickedGroup"   >
+                      <button  type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [ngClass]="{'allow_edit': groupId==clickedGroup}">
+                        {{  group.permission }}  <img width="20" height="20" src = "./../assets/images/combo-arrow.svg" alt="logo"/>
+                      </button>
+                      <ul class="dropdown-menu">
+                        <li *ngFor="let permission of permissionsObj;"><a (click)="changeGroupPermission(permission.key, group.group_id,location.location_id)">{{permission.value}}</a></li>
+                      </ul>
+                    </div>
                   </td>
               </tr>
           </tbody>

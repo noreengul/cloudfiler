@@ -1,5 +1,5 @@
-<span  (click)="highlightLocation()"  [ngClass]="purpleLocation ? 'success' : 'danger'">
-  {{selectedLocation.description}}
+<span  (click)="highlightLocation()"  [ngClass]="purpleLocation ? 'success' : 'danger'" >
+  {{  selectedLocation.description.substr(0,15)}}
   <img  *ngIf="purpleLocation" width="20" height="20" src = "./../assets/images/edit.svg" alt="logo" style="margin-left: 10px;" (click)="open(modalDataEdit)"/></span>
 
 <ng-template #modalDataEdit let-modal  >

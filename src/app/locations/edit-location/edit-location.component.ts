@@ -1,6 +1,7 @@
 import { Component, OnInit ,Input,Output,EventEmitter } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import {LocationService} from "../location.service";
+import {UserService} from "../../shared/user.service";
 
 @Component({
   selector: 'app-edit-location',
@@ -11,15 +12,12 @@ import {LocationService} from "../location.service";
 export class EditLocationComponent implements OnInit {
   closeModal='';
   showEditInput=false;
-  purpleLocation: boolean = false
+  purpleLocation: boolean = false;
   @Input() selectedLocation: any;
   @Input() selectedIndex: any;
   @Output() locationToEdit = new EventEmitter<string>();
   @Output() editLocationData = new EventEmitter<string>();
-  constructor(private modalService: NgbModal,private locationService:LocationService) {
-
-
-  }
+  constructor(private modalService: NgbModal,private locationService:LocationService) {}
 
   ngOnInit(): void {
 
@@ -62,7 +60,7 @@ export class EditLocationComponent implements OnInit {
     } else {
       return `with: ${reason}`;
     }
-    
+
   }
 
   allowEditLocationTitle(){
