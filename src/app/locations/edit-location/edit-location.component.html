@@ -1,6 +1,6 @@
-<span  (click)="highlightLocation()"  [ngClass]="purpleLocation ? 'success' : 'danger'" >
-  {{  selectedLocation.description.substr(0,15)}}
-  <img  *ngIf="purpleLocation" width="20" height="20" src = "./../assets/images/edit.svg" alt="logo" style="margin-left: 10px;" (click)="open(modalDataEdit)"/></span>
+<span class="dfsdfds {{clickedLocation}} {{selectedLocation.location_id}}" (click)="highlightLocation(selectedLocation.location_id)"  [ngClass]="clickedLocation==selectedLocation.location_id ? 'success' : 'danger'" >
+  {{   (selectedLocation.description.length > 20? selectedLocation.description.substr(0,20)+ '...':selectedLocation.description) }}
+  <img  *ngIf="clickedLocation==selectedLocation.location_id" width="20" height="20" src = "./../assets/images/edit.svg" alt="logo" style="margin-left: 10px;" (click)="open(modalDataEdit)"/></span>
 
 <ng-template #modalDataEdit let-modal  >
 
@@ -11,7 +11,7 @@
       <div class="col-md-12 head">
         <img width="35" height="35" src = "./../assets/images/edit.svg" alt="logo"/>
         <span class="title">Location Properties: </span>
-        <span>{{ selectedLocation.description }}</span>
+
         <span *ngIf="showEditInput">
           <input style="width: 50%; display: inline-block" type="text" class="form-control" name="location-title" value="selectedLocation.description" [(ngModel)]="selectedLocation.description"  (keyup.enter)="onSaveLocationTitle()" >
         </span>
@@ -59,7 +59,7 @@
     </div>
     <div class="row edit-model-line">
       <div class="col-md-4 col-xs-4  "><img width="30" height="30" src = "./../assets/images/trash.svg" alt="logo"/><span class="text-title">Delete location</span></div>
-      <div class="col-md-8 col-xs-4 "> <button class="btn   edit_model_button "   (click)="onDeleteLocation( selectedIndex)">Delete the location and all of its files</button></div>
+      <div class="col-md-8 col-xs-4 "> <button class="btn   edit_model_button "   (click)="onDeleteLocation(  selectedLocation.location_id)">Delete the location and all of its files</button></div>
     </div>
     <div class="row edit-model-line">
       <div class="col-md-12 text-edit"  style="text-align: justify;" >If you delete a location we will retain the data for up to 30 days to allow you time to undo this.</div>

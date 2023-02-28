@@ -29,6 +29,7 @@ import { LoadingInterceptor } from './loading.interceptor';
       EditLocationComponent,
       PathLocationComponent,
       SpinnerComponent,
+
    ],
   imports: [
       BrowserModule,
@@ -42,4 +43,5 @@ import { LoadingInterceptor } from './loading.interceptor';
   }],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

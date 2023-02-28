@@ -111,6 +111,17 @@
    margin: 10px;
  }
 
+ .sync_path_text span{
+   word-wrap: break-word !important;
+ }
+
+ .add_update_files .note_text span{
+    margin-left:20px;
+    font-size: 15px;
+ }
+
+
+
 
 
 

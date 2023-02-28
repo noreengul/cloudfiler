@@ -270,5 +270,9 @@ input:checked + .location_label {
   border-color: white !important;
 }
 
+.modal-footer{
+  border: unset !important;
+}
+
 
 

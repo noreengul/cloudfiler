@@ -33,14 +33,14 @@
                 <td><b>Default Access Rights</b></td>
                 <td *ngFor="let group of groups"  class="permission-class"></td>
               </tr>
-              <tr *ngFor="let location of locations.reverse(); let i = index;"   [ngClass]="{'edit_location_tr':  clickLocation==i }" class="location_row">
-                  <td  class="first_cell"   [ngClass]="{'edit_location_td':  clickLocation==i }"  (click)="editLocation(i)" id="location_{{i}}">
-                    <app-edit-location   [selectedLocation]="location" [selectedIndex]="i"  (locationToEdit)="deleteLocation(i)" (editLocationData)="updateLocation($event)"></app-edit-location>
+              <tr *ngFor="let location of locations.reverse(); let i = index;"   [ngClass]="{'edit_location_tr':  clickLocation==location.location_id }" class="location_row">
+                  <td  class="first_cell location_id_{{location.location_id}}"   [ngClass]="{'edit_location_td':  clickLocation==location.location_id }"  (click)="editLocation(location.location_id)" id="location_{{i}}">
+                    <app-edit-location  (parentClicklocation)="updatedClickedLocationStatus($event)" [clickedLocation]="clickLocation"   [selectedLocation]="location" [selectedIndex]="i"  (locationToDelete)="deleteLocation($event)" (editLocationData)="updateLocation($event)"  (editLocationData)="updateLocation($event)"></app-edit-location>
                   </td>
-                  <td *ngFor="let group of location.groups.sort();let groupId = index;"  class="permission-class" [ngClass]="{'permission_change': is_manager}" >
-                    <span *ngIf="groupId!=clickedGroup" (click)="changePermission(groupId)"> {{  clickLocation ==i  ?  group.permission : ( group.permission =='none'?  '':  group.permission) }}</span>
-                    <div class="btn-group test-invalid"   *ngIf=" clickLocation==i && groupId==clickedGroup"   >
-                      <button  type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" [ngClass]="{'allow_edit': groupId==clickedGroup}">
+                  <td *ngFor="let group of  location.groups.sort(); let groupId = index;"  class="permission-class group_id_{{ group.group_id }}" [ngClass]="{'permission_change': is_manager}" >
+                    <span *ngIf=" clickLocation!=location.location_id "  > {{  ( group.permission =='none'?  '':  group.permission) }}</span>
+                    <div class="btn-group test-invalid"   *ngIf=" clickLocation== location.location_id "   >
+                      <button  type="button" class="btn btn-secondary dropdown-toggle allow_edit ggdg" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"  >
                         {{  group.permission }}  <img width="20" height="20" src = "./../assets/images/combo-arrow.svg" alt="logo"/>
                       </button>
                       <ul class="dropdown-menu">

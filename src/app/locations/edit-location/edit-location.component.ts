@@ -12,11 +12,14 @@ import {UserService} from "../../shared/user.service";
 export class EditLocationComponent implements OnInit {
   closeModal='';
   showEditInput=false;
-  purpleLocation: boolean = false;
+  purpleLocation:any ;
   @Input() selectedLocation: any;
+  @Input() clickedLocation: any;
+
   @Input() selectedIndex: any;
-  @Output() locationToEdit = new EventEmitter<string>();
+  @Output() locationToDelete = new EventEmitter<string>();
   @Output() editLocationData = new EventEmitter<string>();
+  @Output() parentClicklocation = new EventEmitter<string>();
   constructor(private modalService: NgbModal,private locationService:LocationService) {}
 
   ngOnInit(): void {
@@ -28,6 +31,7 @@ export class EditLocationComponent implements OnInit {
     this.modalService.open(content, {size: 'lg', backdrop: 'static' ,ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
       this.closeModal = `Closed with: ${res}`;
     }, (res) => {
+
       this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
     });
 
@@ -47,12 +51,14 @@ export class EditLocationComponent implements OnInit {
     this.modalService.open(content, { size: 'sm', backdrop: 'static' ,ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
       this.closeModal = `Closed with: ${res}`;
     }, (res) => {
+
       this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
     });
   }
 
   private getDismissReason(reason: any): string {
-
+    this.clickedLocation = 0;
+    this.parentClicklocation.emit(this.clickedLocation);
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -77,8 +83,7 @@ export class EditLocationComponent implements OnInit {
   onDeleteLocation(location:any ){
 
     if(window.confirm('Are sure you want to delete this location?')){
-
-      this.locationToEdit.emit(location);
+      this.locationToDelete.emit(location);
       this.modalService.dismissAll();
     }
   }
@@ -117,15 +122,15 @@ export class EditLocationComponent implements OnInit {
       }
   }
 
-  saveLocationFile(Location:any){
+  saveLocationFile(LocationPathInfo:any){
 
-      console.log("-----------file location --------");
-      console.log(Location);
-
+      this.selectedLocation.path=LocationPathInfo.path;
+      this.selectedLocation.sync_path=LocationPathInfo.sync_path;
+      this.selectedLocation.autofile_alias=LocationPathInfo.autofile_alias;
+      this.editLocationData.emit(this.selectedLocation);
   }
 
-  highlightLocation(){
-    this.purpleLocation=false;
-    this.purpleLocation=true;
+  highlightLocation(locationId:any){
+    this.purpleLocation=locationId;
   }
 }

@@ -7,11 +7,11 @@
       <div class="col-md-7 col-xs-4" >  <img  style="float:right" width="30" height="30" src = "./../assets/images/Help-black.svg" alt="logo"/></div>
     </div>
   </div>
- <form #postForm="ngForm" (ngSubmit)="onAddLocation()" >
+ <form #postForm="ngForm" (ngSubmit)="onAddLocation()"  >
     <div class="modal-body">
       <div class="form-group">
         <label for="InputLocation">Location Name</label>
-        <input  [ngClass]="{  'in-valid': locationError}"  [(ngModel)]="locationDescription" type="text" class="form-control" name="location" id="InputLocation" aria-describedby="emailHelp" placeholder="Enter Location Name">
+        <input  [ngClass]="{  'in-valid': locationError } "  [(ngModel)]="locationDescription" type="text" class="form-control" name="location" id="InputLocation" aria-describedby="emailHelp" placeholder="Enter Location Name">
       </div>
     </div>
     <div class="modal-footer">

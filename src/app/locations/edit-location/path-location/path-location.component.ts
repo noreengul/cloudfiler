@@ -24,9 +24,7 @@ export class PathLocationComponent implements OnInit {
     this.passLocation(this.ActionLocation.id);
   }
   open(content:any) {
-    console.log(this.ActionLocation);
-    console.log("bbbbbbbbbbbb");
-    console.log(this.ActionLocation);
+
     this.passLocation(this.ActionLocation.id);
     this.mainModelRef =this.modalService.open(content, {   windowClass: 'site_model_class',  backdrop: 'static' ,ariaLabelledBy: 'modal-site-location'});
   }
@@ -68,20 +66,14 @@ export class PathLocationComponent implements OnInit {
 
   AddSystemFile(){
 
-    console.log("2222222222222222");
-    console.log( this.LocationPathInfo);
     this.modalSynPathRef.close();
   }
 
   SaveLocationFile(){
 
-    console.log("ddddddd");
-    console.log( this.LocationPathInfo );
-
     if(this.LocationPathInfo.path !=''){
       this.LocationFile.emit( this.LocationPathInfo );
     }
-
     this.mainModelRef.close();
   }
 
@@ -92,5 +84,10 @@ export class PathLocationComponent implements OnInit {
     });
   }
 
-
+  removeSyncPath(){
+    if(window.confirm('Are sure you want to delete this sync path?')){
+      this.LocationPathInfo.sync_path = '';
+      this.LocationFile.emit( this.LocationPathInfo );
+    }
+  }
 }
