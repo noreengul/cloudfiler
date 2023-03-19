@@ -96,6 +96,7 @@ input {
 @media screen and (max-width: 1640px)  and (min-width: 1460px) {
   .location_label{
     padding: 1% 2.4%;
+    margin-right: 15px;
   }
 }
 
@@ -128,13 +129,16 @@ input {
   .location_label{
     padding: 10px 2px;
     font-size: 15px;
+    margin-right: 10px;
   }
 }
 
 @media screen and (max-width: 992px) and (min-width: 680px) {
   .location_label{
-    padding: 10px 1px;
-    font-size: 15px;
+    /* padding: 10px 1px; */
+    font-size: 14px;
+    margin-right: 5px;
+    margin-bottom: 15px !important;
   }
 }
 
@@ -202,7 +206,8 @@ input:checked + .location_label {
   opacity: 1 !important;
 }
 .modal-dialog {
-  top:20% !important;
+  /* top:25% !important; */
+  transform: inherit !important;
 }
 
 .in-valid {
@@ -249,9 +254,9 @@ input:checked + .location_label {
   color: white !important;
 }
 
-.site_model_class .modal-dialog{
+/* .site_model_class .modal-dialog{
   right: 20%;
-}
+} */
 
 .site_path_model .modal-dialog {
   left: 20%;

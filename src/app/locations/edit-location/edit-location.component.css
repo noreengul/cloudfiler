@@ -51,5 +51,13 @@
   box-shadow: unset;
 }
 
+.btn{
+  white-space: normal !important;
+}
 
 
+@media (max-width:767px){
+  .edit-model-line .btn, .form-control {
+    margin-top: 10px;
+}
+}

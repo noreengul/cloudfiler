@@ -21,7 +21,19 @@
 .header_nav .header-right-db a{
   font-size:17px;
   font-weight: 600;
-  color:#A8A8A8 !important;
+  color:#A8A8A8;
+}
+.header_nav .header-right-db a i{
+  font-size:24px;
+  color: #7030a0;
+
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:focus, .navbar-default .navbar-nav>.open>a:hover {
+  background-color: #7030a0;
+  color: #fff;
+}
+.navbar-nav>.open>a:hover i, .navbar-nav>.open>a:focus i{
+  color: #fff;
 }
 
 .header_nav .user-email a:focus, .header_nav .user-email a:active , .header_nav .user-email a:hover {
@@ -41,4 +53,32 @@
 
 .middle_nav{
   margin:auto;
+}
+
+.dropdown-menu{
+  width: 100%;
+}
+.dropdown-menu li a{
+display: flex;
+align-items: center;
+justify-content: space-between  ;
+}
+.dropdown-menu li a i{
+  font-size: 20px !important;
+}
+
+@media (max-width:991px){
+  .setting{
+    font-size: 20px;
+  }
+  .navbarwrap{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+@media (max-width:767.98px){
+  .header_nav .header-right-db{
+    margin-top: 0;
+  }
 }

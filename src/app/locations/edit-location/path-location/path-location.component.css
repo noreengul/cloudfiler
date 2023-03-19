@@ -1,5 +1,6 @@
  .btn_site{
   width: 100%;
+  white-space: normal;
  }
 
  .btn:active , .btn:focus{
@@ -121,7 +122,11 @@
  }
 
 
-
+ @media (max-width:767px){
+  .btn_site {
+    margin-top: 10px;
+}
+}
 
 
 

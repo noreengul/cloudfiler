@@ -27,39 +27,39 @@
 
   <div class="modal-body">
     <div class="row edit-model-line">
-      <div class="col-md-4 col-xs-4"><img width="30" height="30" src = "./../assets/images/refresh.svg" alt="logo"/><span class="text-title">Sync sites</span> </div>
-      <div class="col-md-8 col-xs-4"><app-path-location [ActionLocation]="selectedLocation" [selectedIndex]="selectedIndex" (LocationFile)="saveLocationFile($event)"></app-path-location> </div>
+      <div class="col-md-4 col-sm-6"><img width="30" height="30" src = "./../assets/images/refresh.svg" alt="logo"/><span class="text-title">Sync sites</span> </div>
+      <div class="col-md-8 col-sm-6"><app-path-location [ActionLocation]="selectedLocation" [selectedIndex]="selectedIndex" (LocationFile)="saveLocationFile($event)"></app-path-location> </div>
     </div>
     <div class="row edit-model-line">
-      <div class="col-md-4 col-xs-4" > <img width="30" height="30" src = "./../assets/images/sub-folder.svg" alt="logo"/><span class="text-title">Sub Locations </span></div>
-      <div class="col-md-8 col-xs-4"> <button class="btn  edit_model_button" (click)="openSmallModel(modalImplement)">View/Edit Sub-locations</button></div>
+      <div class="col-md-4 col-sm-6" > <img width="30" height="30" src = "./../assets/images/sub-folder.svg" alt="logo"/><span class="text-title">Sub Locations </span></div>
+      <div class="col-md-8 col-sm-6"> <button class="btn  edit_model_button" (click)="openSmallModel(modalImplement)">View/Edit Sub-locations</button></div>
     </div>
     <div class="row edit-model-line">
-      <div class="col-md-4 col-xs-4"><img width="30" height="30" src = "./../assets/images/eye.svg" alt="logo"/><span class="text-title">Who has access</span></div>
-      <div class="col-md-8 col-xs-4"> <button class="btn edit_model_button">See who’s permissions allows them access to this location</button></div>
+      <div class="col-md-4 col-sm-6"><img width="30" height="30" src = "./../assets/images/eye.svg" alt="logo"/><span class="text-title">Who has access</span></div>
+      <div class="col-md-8 col-sm-6"> <button class="btn edit_model_button">See who’s permissions allows them access to this location</button></div>
     </div>
     <div class="row edit-model-line">
-      <div class="col-md-4 col-xs-4"><img width="30" height="30" src = "./../assets/images/padlock.svg" alt="logo"/> <span class="text-title">Confidentiality</span></div>
-      <div class="col-md-8 col-xs-4">  <select class="form-control modal_select"><option>Confidentials</option></select></div>
+      <div class="col-md-4 col-sm-6"><img width="30" height="30" src = "./../assets/images/padlock.svg" alt="logo"/> <span class="text-title">Confidentiality</span></div>
+      <div class="col-md-8 col-sm-6">  <select class="form-control modal_select"><option>Confidentials</option></select></div>
     </div>
     <div class="row edit-model-line">
-      <div class="col-md-4 col-xs-4"><img width="30" height="30" src = "./../assets/images/arrow-right.svg" alt="logo"/><span class="text-title">AutoFile alias</span></div>
-      <div class="col-md-8 col-xs-4">  <input  style="color: black;" type="text" value="{{selectedLocation.description}}" class="form-control"></div>
+      <div class="col-md-4 col-sm-6"><img width="30" height="30" src = "./../assets/images/arrow-right.svg" alt="logo"/><span class="text-title">AutoFile alias</span></div>
+      <div class="col-md-8 col-sm-6">  <input  style="color: black;" type="text" value="{{selectedLocation.description}}" class="form-control"></div>
     </div>
     <div class="row edit-model-line">
-      <div class="col-md-5 col-xs-4"  style="margin-left: 35px;"  >Emails copied to this address will be automatically filed </div>
-      <div class="col-md-5 col-xs-4"  style="font-size: 13px;float:right;color:dodgerblue;">  Project_Alpha_mybusiness@cloudfiler.me </div>
+      <div class="col-md-5 col-sm-6"  style="margin-left: 35px;"  >Emails copied to this address will be automatically filed </div>
+      <div class="col-md-5 col-sm-6"  style="font-size: 13px;float:right;color:dodgerblue;">  Project_Alpha_mybusiness@cloudfiler.me </div>
     </div>
     <div class="row edit-model-line">
-      <div class="col-md-4 col-xs-4  ">
+      <div class="col-md-4 col-sm-6  ">
         <img  id="checked" (click)="setUnArchive()" width="30" height="30" src = "./../assets/images/toggle-on.svg" alt="logo" style="display: none;"/>
         <img id="unchecked" (click)="setArchive()" width="30" height="30" src = "./../assets/images/toggle-off.svg" alt="logo" />
         <span class="text-title">Move to archive</span></div>
-      <div class="col-md-8 col-xs-4"> <input  style="color: black;" type="text" value="Currently hosted in core storage" class="form-control"></div>
+      <div class="col-md-8 col-sm-6"> <input  style="color: black;" type="text" value="Currently hosted in core storage" class="form-control"></div>
     </div>
     <div class="row edit-model-line">
-      <div class="col-md-4 col-xs-4  "><img width="30" height="30" src = "./../assets/images/trash.svg" alt="logo"/><span class="text-title">Delete location</span></div>
-      <div class="col-md-8 col-xs-4 "> <button class="btn   edit_model_button "   (click)="onDeleteLocation(  selectedLocation.location_id)">Delete the location and all of its files</button></div>
+      <div class="col-md-4 col-sm-6  "><img width="30" height="30" src = "./../assets/images/trash.svg" alt="logo"/><span class="text-title">Delete location</span></div>
+      <div class="col-md-8 col-sm-6 "> <button class="btn   edit_model_button "   (click)="onDeleteLocation(  selectedLocation.location_id)">Delete the location and all of its files</button></div>
     </div>
     <div class="row edit-model-line">
       <div class="col-md-12 text-edit"  style="text-align: justify;" >If you delete a location we will retain the data for up to 30 days to allow you time to undo this.</div>
