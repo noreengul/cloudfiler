@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
   constructor(private userService:UserService) { }
 
   ngOnInit(): void {
-    
+
     this.userService.getUserInfo().subscribe(user => {
       this.userDetail = user ;
       this.userService.updateUserData(user);

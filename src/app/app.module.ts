@@ -17,6 +17,10 @@ import { HttpClientModule , HTTP_INTERCEPTORS } from "@angular/common/http";
 import { PathLocationComponent } from './locations/edit-location/path-location/path-location.component';
 import { SpinnerComponent } from './spinner/spinner.component';
 import { LoadingInterceptor } from './loading.interceptor';
+import { GroupsComponent } from './groups/groups.component';
+import { AddGroupComponent } from './groups/add-group/add-group.component';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+import { AccessdeniedComponent } from './accessdenied/accessdenied.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,10 @@ import { LoadingInterceptor } from './loading.interceptor';
       EditLocationComponent,
       PathLocationComponent,
       SpinnerComponent,
+      GroupsComponent,
+      AddGroupComponent,
+      PagenotfoundComponent,
+      AccessdeniedComponent,
 
    ],
   imports: [

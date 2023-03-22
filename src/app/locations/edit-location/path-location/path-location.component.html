@@ -16,34 +16,31 @@
     </div>
     <div class="modal-body site_files"  style="margin-left: 1%;">
         <div class="row select_site">
-              <div class="col-md-12">
-                  <span>Site type</span>
-                  <input type="text" name="search" class="form-control share-point"  placeholder="Share Point"  >
-                  <img width="25"  height="25" src = "./../assets/images/plus-square-grey.svg" alt="logo"  />
-              </div>
-        </div>
-        <div class="row listing_paths"  >
-            <div class="col-md-10 sync_path_text"> <span>{{LocationPathInfo.sync_path? LocationPathInfo.sync_path+'(File System)':''}}  </span></div>
-            <div class="col-md-2 float-right" *ngIf="LocationPathInfo.sync_path">
-                <img width="20" class="float-right margin-left-7"  height="20" src = "./../assets/images/minus-square-grey.svg" alt="logo"   (click)="removeSyncPath()" />
-                <img width="20"  class="float-right" height="20" src = "./../assets/images/edit.svg" alt="logo"  (click)="openSiteModel(modalSitePathLocation)"  />&nbsp;&nbsp;&nbsp;
+            <div class="col-md-12">
+                <span>Site type</span>
+                <input type="text" name="search" class="form-control share-point"  placeholder="Share Point"  >
+                <img width="25"  height="25" src = "./../assets/images/plus-square-grey.svg" alt="logo"  />
             </div>
         </div>
+        <div class="row listing_paths" >
+          <div class="col-md-10 sync_path_text"> <span>{{LocationPathInfo.sync_path? LocationPathInfo.sync_path+'(File System)':''}}  </span></div>
+          <div class="col-md-2 float-right" *ngIf="LocationPathInfo.sync_path">
+              <img width="20" class="float-right margin-left-7"  height="20" src = "./../assets/images/minus-square-grey.svg" alt="logo"   (click)="removeSyncPath()" />
+              <img width="20"  class="float-right" height="20" src = "./../assets/images/edit.svg" alt="logo"  (click)="openSiteModel(modalSitePathLocation)"  />&nbsp;&nbsp;&nbsp;
+          </div>
+        </div>
         <div class="row modal-footer">
-          <div class="col-md-12 ">
+          <div class="col-md-12">
             <button type="button" class="btn btn-primary modal-btn  float-right "  (click)="modal.dismiss('Cross click')">Cancel</button>
             <button type="button" class="btn btn-primary  modal-btn float-right"   (click)="SaveLocationFile()"  >OK</button>
           </div>
         </div>
     </div>
   </div>
-
 </ng-template>
 
 <ng-template #modalSitePathLocation let-modal  >
-
   <div class="site_model"  >
-
     <div class="modal-header" style="border-bottom:unset">
         <div class="row edit-location-header">
             <div class="col-md-12 head">
@@ -56,9 +53,8 @@
     </div>
 
     <div class="modal-body site_files add_update_files"  style="margin-left: 1%;">
-
         <div class="row form-group">
-            <div class="col-md-12">
+            <div class="col-md-12 col-sm-12 col-md-12">
                 <span>Path</span>
                 <input type="text" name="search" class="form-control  browser-input"  placeholder="Share Point" [(ngModel)]="LocationPathInfo.sync_path"   >
                 <!--<label class="btn custom-file-upload">
@@ -81,12 +77,11 @@
 
         <div class="row modal-footer">
             <div class="col-md-12 ">
-                <button type="button" class="btn btn-primary modal-btn  float-right "  (click)="modal.dismiss('Cross click')">Cancel</button>
+                <button type="button" class="btn btn-primary modal-btn  float-right"  (click)="modal.dismiss('Cross click')">Cancel</button>
                 <button type="button" class="btn btn-primary  modal-btn float-right"  (click)="AddSystemFile()">Add</button>
             </div>
         </div>
     </div>
-
   </div>
 
 </ng-template>
