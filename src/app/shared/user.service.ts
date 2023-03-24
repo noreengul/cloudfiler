@@ -26,7 +26,7 @@ export class UserService {
     this.token=this.authService.getToken();
 
     return this.http.get ( this.APP_URL + 'user' , {
-      headers: {  "Authorization": this.token}
+      headers: {  "Authorization": "Bearer "+this.token}
     }).
     pipe(
       map( (responseData:any) => {

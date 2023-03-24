@@ -101,7 +101,7 @@ export class LocationsComponent implements OnInit {
   }
 
   updatedClickedLocationStatus(click_location:any){
-    console.log("sdfssssssssssssssssssssss");
+
     this.clickLocation =  click_location
   }
   addLocation(newLocation : string){
@@ -128,11 +128,11 @@ export class LocationsComponent implements OnInit {
 
   search(value:string){
 
-    if(this.locations[0].description){
-        this.locations.filter( (locationTest:any) => {
-          return locationTest.location_id==1;
-        })
-    }
+    //if(this.locations[0].description){
+       // this.locations.filter( (locationTest:any) => {
+       //   return locationTest.location_id==1;
+      //  })
+   // }
     if( value!==undefined && value!='' && value !=null) {
       this.locations = this.locations.filter((locationData: any) =>
         locationData.description.toLowerCase().includes(value.toLowerCase())

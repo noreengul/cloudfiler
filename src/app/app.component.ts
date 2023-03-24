@@ -21,7 +21,9 @@ export class AppComponent {
 
     let token = this.getParameterByName('access_token');
     if(token){
-      this.authService.setToken("Bearer "+token);
+      this.authService.setToken(token);
+    }else{
+      this.authService.setToken("");
     }
   }
 

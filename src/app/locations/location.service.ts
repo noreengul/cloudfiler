@@ -16,7 +16,7 @@ export class LocationService{
     token =  this.authService.getToken();
     getLocations(){
         return this.http.get ( this.APP_URL +'locations/access?all_groups=true', {
-            headers: {  "Authorization": this.token}
+            headers: {  "Authorization": "Bearer "+this.token}
         }).
         pipe(
             map( (responseData:any) => {
@@ -27,7 +27,7 @@ export class LocationService{
 
     getAccessLocations(){
       return this.http.get ( this.APP_URL +'locations/access', {
-        headers: {  "Authorization": this.token}
+        headers: {  "Authorization": "Bearer "+this.token}
       }).
       pipe(
           map( (responseData:any) => {
@@ -38,7 +38,7 @@ export class LocationService{
     addLocation(newLocation : string){
         const body =  ({ description: newLocation,sync_path:'' });
         return this.http.post( this.APP_URL +'locations',  (body),{
-            headers: { "Authorization": this.token }
+            headers: { "Authorization": "Bearer "+this.token }
         });
    }
     updateLocation(location:any){
@@ -51,20 +51,20 @@ export class LocationService{
       }
 
       return this.http.patch(this.APP_URL+ 'locations/'+location.id,locationUpdated,{
-          headers: {  "Authorization": this.token }
+          headers: {  "Authorization": "Bearer "+this.token }
       });
     }
 
     deleteLocation(id:string){
         return this.http.delete( this.APP_URL+'locations/'+id,{
-            headers: {  "Authorization": this.token }
+            headers: {  "Authorization": "Bearer "+this.token }
         });
     }
 
    getLocation(id:string){
 
     return this.http.get ( this.APP_URL+'locations/'+id , {
-      headers: {  "Authorization": this.token}
+      headers: {  "Authorization": "Bearer "+this.token}
     }).
     pipe(
       map( (responseData:any) => {
@@ -75,7 +75,7 @@ export class LocationService{
 
   updateGroupPermission(data:any){
     return this.http.patch( this.APP_URL+'locations/'+data.locationId+"/access"  ,([{"permission":data.permission,"group_id":data.groupId}]), {
-      headers: {  "Authorization": this.token}
+      headers: {  "Authorization": "Bearer "+this.token}
     });
   }
 }

@@ -1,6 +1,8 @@
-
 <input id="tab1" type="radio" name="tabs" >
 <label class="location_label" for="tab1">Licenses</label>
+
+<input id="tab9" type="radio" name="tabs">
+<label class="location_label" for="tab9"  (click)="onSelect('groups')">Groups</label>
 
 <input id="tab3" type="radio" name="tabs">
 <label class="location_label" for="tab3">Accounts</label>
@@ -9,7 +11,7 @@
 <label class="location_label" for="tab4">Settings & Admin</label>
 
 <input id="tab5" type="radio" name="tabs" checked>
-<label class="location_label" for="tab5">Locations</label>
+<label class="location_label" for="tab5"  (click)="onSelect('locations')" >Locations</label>
 
 <input id="tab6" type="radio" name="tabs">
 <label class="location_label" for="tab6" >Default Settings</label>
@@ -19,4 +21,3 @@
 
 <input id="tab8" type="radio" name="tabs">
 <label class="location_label last" for="tab8"  >Your Private Location</label>
-

@@ -16,7 +16,7 @@ export class GroupService{
 
   getGroups(){
     return this.http.get ( this.APP_URL +'groups' , {
-      headers: {  "Authorization": this.Token}
+      headers: {  "Authorization": "Bearer "+this.Token}
     }).
     pipe(
       map( (responseData:any) => {
