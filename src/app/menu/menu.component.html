@@ -1,11 +1,11 @@
 <input id="tab1" type="radio" name="tabs" >
-<label class="location_label" for="tab1">Licenses</label>
+<label class="location_label" for="tab1" (click)="onSelect('license')">Licenses</label>
 
 <input id="tab9" type="radio" name="tabs">
 <label class="location_label" for="tab9"  (click)="onSelect('groups')">Groups</label>
 
 <input id="tab3" type="radio" name="tabs">
-<label class="location_label" for="tab3">Accounts</label>
+<label class="location_label" for="tab3" (click)="onSelect('accounts')">Accounts</label>
 
 <input id="tab4" type="radio" name="tabs">
 <label class="location_label" for="tab4">Settings & Admin</label>
@@ -14,10 +14,10 @@
 <label class="location_label" for="tab5"  (click)="onSelect('locations')" >Locations</label>
 
 <input id="tab6" type="radio" name="tabs">
-<label class="location_label" for="tab6" >Default Settings</label>
+<label class="location_label" for="tab6" (click)="onSelect('settings')" >Default Settings</label>
 
 <input id="tab7" type="radio" name="tabs">
-<label class="location_label last" for="tab7"  >Your Settings</label>
+<label class="location_label last" for="tab7" (click)="onSelect('your-settings')" >Your Settings</label>
 
 <input id="tab8" type="radio" name="tabs">
-<label class="location_label last" for="tab8"  >Your Private Location</label>
+<label class="location_label last" for="tab8" (click)="onSelect('your-private-settings')" >Your Private Location</label>

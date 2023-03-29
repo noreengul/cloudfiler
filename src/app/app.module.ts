@@ -21,6 +21,11 @@ import { GroupsComponent } from './groups/groups.component';
 import { AddGroupComponent } from './groups/add-group/add-group.component';
 import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { AccessdeniedComponent } from './accessdenied/accessdenied.component';
+import { LicenseComponent } from './license/license.component';
+import { PrivatesettingsComponent } from './privatesettings/privatesettings.component';
+import { SettingsComponent } from './settings/settings.component';
+import { YoursettingsComponent } from './yoursettings/yoursettings.component';
+import { YourprivatesettingsComponent } from './yourprivatesettings/yourprivatesettings.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +42,11 @@ import { AccessdeniedComponent } from './accessdenied/accessdenied.component';
       AddGroupComponent,
       PagenotfoundComponent,
       AccessdeniedComponent,
+      LicenseComponent,
+      PrivatesettingsComponent,
+      SettingsComponent,
+      YoursettingsComponent,
+      YourprivatesettingsComponent,
 
    ],
   imports: [
