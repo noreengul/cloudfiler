@@ -54,6 +54,18 @@ p {
   margin: 0 0 20px;
   line-height: 1.5;
 }
+.mr-2{
+  margin-right: 2rem;
+}
+.mt-1{
+  margin-top: 1rem;
+}
+.ms-1{
+  margin-left: 1rem;
+}
+.ms-2{
+  margin-left: 2rem;
+}
 
 main {
   width: 100%;
