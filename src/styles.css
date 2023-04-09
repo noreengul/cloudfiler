@@ -158,9 +158,9 @@ input {
 
 @media screen and (max-width: 1050px) and (min-width: 992px) {
   .location_label{
-    padding: 10px 2px;
+    padding: 10px 14px;
     font-size: 15px;
-    margin-right: 10px;
+    /* margin-right: 10px; */
   }
 }
 
@@ -178,6 +178,10 @@ input {
     display: block !important;
     padding: 10px  ;
     font-size: 15px;
+    border-right: solid 2px #b4b4b4;
+  }
+  .location_label:before{
+    content: none;
   }
 }
 

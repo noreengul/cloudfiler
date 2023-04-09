@@ -2,6 +2,10 @@
   padding: 20px;
 }
 
+.main-account-container{
+  margin-left: 60px;
+  margin-top: 1rem;
+}
 
 
 .checkbox label:after {
@@ -25,9 +29,15 @@
   margin-right: .5em;
 }
 
+tr:hover{
+  background-color: #D4BEE5;
+}
 tr td{
   width: 15% !important;
-  padding : 14px !important;
+  padding : 0 15px !important;
+  font-size: 14px;
+  vertical-align: middle;
+  height: 60px;
 }
 
 tr th {
@@ -89,3 +99,30 @@ tr th {
 
 }
 
+.inner-addon{
+  position: relative;
+}
+.inner-addon input{
+  display: inline-block;
+  height: 40px;
+  min-width: 220px;
+  padding: 10px;
+  color: black;
+
+}
+.inner-addon img{
+  position: absolute;
+  right: 20px;
+  width: 24px;
+  top: 8px;
+
+}
+.add_user {
+  font-size: 18px;
+  vertical-align: middle;
+  color: #000000;
+  cursor: pointer;
+}
+.add_user img {
+  margin-right: 1rem;
+}
