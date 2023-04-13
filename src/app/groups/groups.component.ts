@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { GroupService } from '../shared/group.service';
+import {Group} from "../shared/group.model";
 
 @Component({
   selector: 'app-groups',
@@ -7,9 +9,100 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GroupsComponent implements OnInit {
 
-  constructor() { }
+  constructor(private groupService:GroupService) { }
+
+  groups !: Group[];
+  activeGroup : any;
+  selectGroup : any;
+   
 
   ngOnInit(): void {
+
+    this.groupService.getGroups().subscribe(groups => {
+      
+      this.groups = groups;
+      if(groups[0]){
+        this.activeGroup = groups[0].group_id;
+        console.log(groups[0]);
+        //this.selectGroup=groups[0];
+        this.clickGroup(groups[0].group_id);
+      }
+    });
+  }
+
+  clickGroup(groupId:number){
+
+    this.activeGroup= groupId; 
+    this.groupService.getGroupsMembers(groupId).subscribe(groups => {
+      
+      this.selectGroup = groups;
+    });
+
+  }
+
+  addMember(newMebers:any){
+    
+    this.groupService.addGroupMember(newMebers,this.activeGroup).subscribe(()  => {
+      this.clickGroup( this.activeGroup);
+    });
+  }
+
+  addGroup( newGroup:any){
+    
+    this.groupService.addGroup(newGroup).subscribe(()  => {
+      this.groupService.getGroups().subscribe(groups => {
+      
+        this.groups = groups;
+        if(groups[0]){
+          this.activeGroup = groups[groups.length -1].group_id;
+          this.clickGroup( groups[groups.length -1].group_id);
+        }
+      });
+    });
+    
+ }
+
+  deleteGroup(groupId:any){
+    
+    if(window.confirm('Are sure you want to delete this group?')){
+      this.groupService.deleteGroup(groupId).subscribe(groups => {
+        this.groupService.getGroups().subscribe(groups => {
+        
+          this.groups = groups;
+          if(groups[0]){
+            this.activeGroup = groups[groups.length -1].group_id;
+            this.clickGroup( this.activeGroup);
+             
+          }
+        });
+      });
+    }
+   
+  }
+
+  deleteGroupMember(groupMember:string){
+    
+    if(window.confirm('Are sure you want to delete this member?')){
+     // this.groupService.deleteGroupMember(this.activeGroup,groupMember).subscribe(() => {
+      //  this.clickGroup( this.activeGroup); 
+      //});
+    }
+  }
+
+  editGroup(group:any){
+
+    this.groupService.updateGroup(group).subscribe(() => {
+      this.selectGroup.description = group.description;
+      this.groupService.getGroups().subscribe(groups => {
+        
+        this.groups = groups;
+        if(groups[0]){
+          this.activeGroup = groups[groups.length -1].group_id;
+           
+        }
+      });
+    });
+     
   }
 
 }

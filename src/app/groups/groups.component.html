@@ -16,25 +16,27 @@
 <div class="row">
   <div class="col-md-5 mb_3 p-0">
     <ul class="nav nav-pills flex-column group_tabs mt_2 mb_2" id="myTab" role="tablist">
-      <li class="nav-item active">
+      <!-- <li  class="nav-item active">
         <a class="nav-link active" id="mainboard-tab" data-toggle="tab" href="#mainboard" role="tab" aria-controls="mainboard"
-          aria-selected="true">Main Board
+          aria-selected="true"> TEst
           <div class="icons">
             <img _ngcontent-uyg-c115="" width="50" height="50" class="ml-auto" src="./../assets/images/edit.svg" alt="edit">
             <img _ngcontent-uyg-c115="" width="50" height="50" class="ml-auto" src="./../assets/images/minus-square-grey.svg" alt="minus">
           </div>
           </a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" id="legalteam-tab" data-toggle="tab" href="#legalteam" role="tab" aria-controls="legalteam"
-          aria-selected="false">Legal team
+      </li> -->
+      <li *ngFor="let group of groups;"  class="nav-item" [ngClass]="{'active': group.group_id==activeGroup}" (click)="clickGroup(group.group_id)">
+        <a class="nav-link" id="legalteam-tab" data-toggle="tab"  href="#{{group.description}}" role="tab" aria-controls="legalteam"
+          aria-selected="false"  >{{  group.description }}
           <div class="icons">
-            <img _ngcontent-uyg-c115="" width="50" height="50" class="ml-auto" src="./../assets/images/edit.svg" alt="edit">
-            <img _ngcontent-uyg-c115="" width="50" height="50" class="ml-auto" src="./../assets/images/minus-square-grey.svg" alt="minus">
+            <app-edit-group (groupToEdit)="editGroup($event)" [selectedGroup]="group"></app-edit-group>
+            
+            <img _ngcontent-uyg-c115="" width="50" height="50" class="ml-auto" src="./../assets/images/minus-square-grey.svg" alt="minus" (click)="deleteGroup(group.group_id)">
           </div>
          </a>
       </li>
-      <li class="nav-item">
+      
+      <!-- <li class="nav-item">
         <a class="nav-link" id="hrteam-tab" data-toggle="tab" href="#hrteam" role="tab" aria-controls="hrteam"
           aria-selected="false"> HR Team
           <div class="icons">
@@ -60,7 +62,7 @@
             <img _ngcontent-uyg-c115="" width="50" height="50" class="ml-auto" src="./../assets/images/minus-square-grey.svg" alt="minus">
           </div>
         </a>
-      </li>
+      </li>-->
       <li class="nav-item">
         <a class="nav-link" id="All-tab" data-toggle="tab" href="#All" role="tab" aria-controls="All"
           aria-selected="false"> All
@@ -74,24 +76,27 @@
   </div>
   <!-- /.col-md-4 -->
   <div class="col-md-6 pl-0">
-    <div class="tab-content custom_tab_content" id="myTabContent">
-      <div class="tab-pane fade active in h_100" id="mainboard" role="tabpanel" aria-labelledby="mainboard-tab">
+    <div class="tab-content custom_tab_content" id="myTabContent" >
+      <div class="tab-pane fade  in h_100" *ngIf="selectGroup"   [ngClass]="{'active': selectGroup.id==activeGroup}"     id="{{selectGroup.description}}" role="tabpanel" aria-labelledby="mainboard-tab">
        <div class="row h_100">
         <div class="col-md-12 h_100">
           <div class="d_flex">
             <img _ngcontent-uyg-c115="" width="50" height="50" src="./../assets/images/Group.svg" alt="logo">
-              <h4> partner</h4>
-              <img _ngcontent-uyg-c115="" width="50" height="50" class="ml-auto" src="./../assets/images/minus-square-grey.svg" alt="minus">
+              <h4>{{selectGroup.description}} </h4>
+              <img _ngcontent-uyg-c115="" width="50" height="50" class="ml-auto" src="./../assets/images/minus-square-grey.svg" alt="minus" (click)="deleteGroup(activeGroup)">
            </div>
-          <div class="d_flex">
-              <h4> Charles.Chairman@mycompany.com</h4>
-              <img _ngcontent-uyg-c115="" width="50" height="50" class="ml-auto" src="./../assets/images/minus-square-grey.svg" alt="minus">
+           <div *ngIf="selectGroup.users.length > 0" >
+              <div  class="d_flex"  *ngFor="let group_members of selectGroup.users"  >
+                <h4>{{group_members.email}}</h4>
+                <img _ngcontent-uyg-c115="" width="50" height="50" class="ml-auto" src="./../assets/images/minus-square-grey.svg" alt="minus" (click)="deleteGroupMember(group_members.email)">
+              </div>
            </div>
-           <div class="add_group_btn"><app-add-group><a class="add_group"><img width="20" height="20" src="./../assets/images/plus-square-grey.svg" alt="logo"><span class="icon_text"> Add a group</span></a></app-add-group></div>
+          
+           <div class="add_group_btn"><app-add-member (groupMemberToAdd)="addMember($event)"></app-add-member> </div>
         </div>
        </div>
       </div>
-      <div class="tab-pane fade" id="legalteam" role="tabpanel" aria-labelledby="legalteam-tab">
+      <!-- <div  class="tab-pane fade" id="legalteam" role="tabpanel" aria-labelledby="legalteam-tab">
         Legal Team tab
       </div>
       <div class="tab-pane fade" id="hrteam" role="tabpanel" aria-labelledby="hrteam-tab">
@@ -108,7 +113,7 @@
       </div>
       <div class="tab-pane fade" id="All" role="tabpanel" aria-labelledby="All-tab">
         All Tab
-      </div>
+      </div> -->
     </div>
   </div>
   <!-- /.col-md-8 -->
@@ -131,6 +136,7 @@
 
 <div class="row">
   <div class="col-md-12  ">
-    <app-add-group></app-add-group>
+    <!-- <a class="add_group" (click)="addGroup()"><img width="20" height="20" src="./../assets/images/plus-square-grey.svg" alt="logo"><span class="icon_text"> Add a group</span></a> -->
+     <app-add-group (groupToAdd)="addGroup($event)"></app-add-group>
   </div>
 </div>

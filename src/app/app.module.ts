@@ -26,6 +26,9 @@ import { PrivatesettingsComponent } from './privatesettings/privatesettings.comp
 import { SettingsComponent } from './settings/settings.component';
 import { YoursettingsComponent } from './yoursettings/yoursettings.component';
 import { YourprivatesettingsComponent } from './yourprivatesettings/yourprivatesettings.component';
+import { AddMemberComponent } from './groups/add-member/add-member.component';
+import { EditGroupComponent } from './groups/edit-group/edit-group.component';
+
 
 @NgModule({
   declarations: [
@@ -47,7 +50,8 @@ import { YourprivatesettingsComponent } from './yourprivatesettings/yourprivates
       SettingsComponent,
       YoursettingsComponent,
       YourprivatesettingsComponent,
-
+      AddMemberComponent,
+      EditGroupComponent
    ],
   imports: [
       BrowserModule,

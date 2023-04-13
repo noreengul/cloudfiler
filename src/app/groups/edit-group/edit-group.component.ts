@@ -1,22 +1,23 @@
-import { Component,EventEmitter, OnInit, Output} from '@angular/core';
+import { Component,EventEmitter, OnInit, Output,Input} from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
-  selector: 'app-add-group',
-  templateUrl: './add-group.component.html',
-  styleUrls: ['./add-group.component.css']
+  selector: 'app-edit-group',
+  templateUrl: './edit-group.component.html',
+  styleUrls: ['./edit-group.component.css']
 })
-export class AddGroupComponent implements OnInit {
+export class EditGroupComponent implements OnInit {
 
   closeModal='';
-  groupDescription !: string;
   groupError=false;
-  @Output() groupToAdd = new EventEmitter<string>();
-
+  @Output() groupToEdit = new EventEmitter<string>();
+  @Input() selectedGroup: any;
+  groupDescription !: string;
   constructor(private modalService: NgbModal) { }
 
   ngOnInit(): void {
+    this.groupDescription = this.selectedGroup.description;
   }
 
   open(content:any) {
@@ -39,12 +40,13 @@ export class AddGroupComponent implements OnInit {
     }
   }
 
-  onAddGroup(){
+  onEditGroup(){
      
     this.groupError=false;
     if(this.groupDescription){
-       
-        this.groupToAdd.emit(this.groupDescription);
+      
+        this.selectedGroup.description = this.groupDescription;
+        this.groupToEdit.emit(this.selectedGroup);
         this.modalService.dismissAll();
     }else{
        

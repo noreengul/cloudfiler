@@ -24,4 +24,59 @@ export class GroupService{
       })
     );
   }
+
+  getGroupsMembers(groupId:number){
+
+    return this.http.get ( this.APP_URL +'groups/'+groupId+'/members' , {
+      headers: {  "Authorization": "Bearer "+this.Token}
+    }).
+    pipe(
+      map( (responseData:any) => {
+        return   responseData;
+      })
+    );
+  }
+
+  addGroup(newGroup : string){
+
+    const body =  ({ description: newGroup });
+        return this.http.post( this.APP_URL +'groups',  (body),{
+            headers: { "Authorization": "Bearer "+this.Token }
+        });
+  }
+
+  addGroupMember(newGroupMember : string,groupId: number){
+    
+    const body =  [{ email: newGroupMember }];
+        return this.http.post( this.APP_URL +'groups/'+groupId+'/members',  (body),{
+            headers: { "Authorization": "Bearer "+this.Token }
+        });
+  }
+
+
+  deleteGroup(id:string){
+     
+    return this.http.delete( this.APP_URL+'groups/'+id,{
+        headers: {  "Authorization": "Bearer "+this.Token }
+    });
+  }
+
+  deleteGroupMember(id:number,email:string){
+
+    //return this.http.delete( this.APP_URL+'groups/'+id,{
+      //headers: {  "Authorization": "Bearer "+this.Token }
+    //});
+  }
+
+  updateGroup(group:any){
+
+    let groupUpdated= {
+      "description": group.description,
+    }
+
+    return this.http.patch(this.APP_URL+ 'groups/'+group.group_id,groupUpdated,{
+        headers: {  "Authorization": "Bearer "+this.Token }
+    });
+  }
+
 }

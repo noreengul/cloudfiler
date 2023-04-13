@@ -1,14 +1,14 @@
-<a class="add_group" (click)="open(modalData)"> <img width="20" height="20" src = "./../assets/images/plus-square-grey.svg" alt="logo"/>  <span class="icon_text" > Add a group</span></a>
-
+<!-- <a class="add_group" (click)="open(modalData)"> <img width="20" height="20" src = "./../assets/images/plus-square-grey.svg" alt="logo"/>  <span class="icon_text" > Add a memeber</span></a> -->
+<img _ngcontent-uyg-c115="" (click)="open(modalData)"  style="margin-right:9px" width="25" height="50" class="ml-auto" src="./../assets/images/edit.svg" alt="edit">
 
 <ng-template #modalData let-modal class="add_location">
     <div class="modal-header">
       <div class="row edit_row"   >
-        <div class="col-md-5  col-xs-4 "><img width="30" height="30" src = "./../assets/images/folder-open.svg" alt="logo"/>&nbsp;&nbsp;<span class="head_title">Add Group </span></div>
+        <div class="col-md-5  col-xs-4 "><img width="30" height="30" src = "./../assets/images/folder-open.svg" alt="logo"/>&nbsp;&nbsp;<span class="head_title">Edit Group </span></div>
         <div class="col-md-7 col-xs-4" >  <img  style="float:right" width="30" height="30" src = "./../assets/images/Help-black.svg" alt="logo"/></div>
       </div>
     </div>
-   <form #postForm="ngForm" (ngSubmit)="onAddGroup()"  >
+   <form #postForm="ngForm" (ngSubmit)="onEditGroup()"  >
       <div class="modal-body">
         <div class="form-group">
           <label for="InputLocation">Group Name</label>
@@ -16,7 +16,7 @@
         </div>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Add</button>
+        <button type="submit" class="btn btn-primary">Update</button>
         <a (click)="modal.close('Done click')"  class="btn btn-default">Close</a>
       </div>
     </form>

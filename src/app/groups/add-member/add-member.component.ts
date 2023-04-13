@@ -3,16 +3,16 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
-  selector: 'app-add-group',
-  templateUrl: './add-group.component.html',
-  styleUrls: ['./add-group.component.css']
+  selector: 'app-add-member',
+  templateUrl: './add-member.component.html',
+  styleUrls: ['./add-member.component.css']
 })
-export class AddGroupComponent implements OnInit {
+export class AddMemberComponent implements OnInit {
 
   closeModal='';
-  groupDescription !: string;
-  groupError=false;
-  @Output() groupToAdd = new EventEmitter<string>();
+  memberDescription !: string;
+  memberError=false;
+  @Output() groupMemberToAdd = new EventEmitter<string>();
 
   constructor(private modalService: NgbModal) { }
 
@@ -20,7 +20,7 @@ export class AddGroupComponent implements OnInit {
   }
 
   open(content:any) {
-    this.groupError=false;
+    this.memberError=false;
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
       this.closeModal = `Closed with: ${res}`;
     }, (res) => {
@@ -29,7 +29,6 @@ export class AddGroupComponent implements OnInit {
   }
 
   private getDismissReason(reason: any): string {
-    
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
@@ -39,16 +38,16 @@ export class AddGroupComponent implements OnInit {
     }
   }
 
-  onAddGroup(){
-     
-    this.groupError=false;
-    if(this.groupDescription){
-       
-        this.groupToAdd.emit(this.groupDescription);
+  onAddGroupMember(){
+    
+    this.memberError=false;
+    if(this.memberDescription){
+      
+        this.groupMemberToAdd.emit(this.memberDescription);
         this.modalService.dismissAll();
     }else{
-       
-       this.groupError=true;
+     
+       this.memberError=true;
     }
   }
 
