@@ -51,6 +51,11 @@
   margin-left: 0.5rem;
   display: inline-block;
 }
+.group_tabs {
+  overflow-y: auto;
+  max-height: 400px;
+  overflow-x: hidden;
+}
 .group_tabs.nav-pills>li>a .icons img{
   width: 25px;
   height: 25px;

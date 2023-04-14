@@ -172,6 +172,73 @@ input {
     margin-bottom: 15px !important;
   }
 }
+@media screen and (max-width: 768px){
+  span.tooltiptext{
+    width: 335px !important;
+  }
+  .private_note {
+    width: 100% !important;
+}
+}
+@media screen and (max-width: 767px){
+  .row.table-header-account{
+    flex-direction: column;
+  }
+  .row.table-header-account .box{
+    margin-bottom: 10px;
+  }
+  .main-account-container{
+    margin-left: 0 !important;
+  }
+  .heading img, .location-row1 img {
+    width: 24px !important;
+}
+img.help_image {
+  width: 24px;
+}
+.w_sm_32{
+  width: 32px;
+}
+.main-account-container span.rightext img, .licenses_table table tr td img {
+  width: 20px;
+  height: auto;
+}
+.pl-0{
+  padding-left: 15px !important;
+}
+.uponfile {
+  margin-top: 0 !important;
+  display: block !important;
+}
+.direction_sm_column{
+  flex-direction: column;
+}
+.allowuser {
+  margin-left: 0 !important;
+  margin-right: auto;
+  display: flex !important;
+  align-items: center;
+}
+.allowuser h5{
+  margin-right:10px;
+}
+span.tooltiptext {
+  width: 270px !important;
+  left: 0px !important;
+}
+.tooltipwrap {
+  display: block !important;
+}
+.custom-control{
+  margin-left: 2.5rem !important;
+}
+.title-div .title{
+  font-size: 17px !important;
+}
+main{
+  padding: 20px;
+}
+}
 
 @media screen and (max-width: 680px) {
   .location_label{
@@ -183,13 +250,13 @@ input {
   .location_label:before{
     content: none;
   }
-}
-
-@media screen and (max-width: 680px){
   .location_label{
     font-size: 14px !important;
   }
+
 }
+
+
 
 .location_label.last{
   background-color:#D4BEE5;
