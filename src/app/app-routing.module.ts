@@ -10,12 +10,14 @@ import {LicenseComponent} from "./license/license.component";
 import {SettingsComponent} from "./settings/settings.component";
 import {YoursettingsComponent} from "./yoursettings/yoursettings.component";
 import {YourprivatesettingsComponent} from "./yourprivatesettings/yourprivatesettings.component";
+import { ManagersComponent } from './managers/managers.component';
 
 const routes: Routes = [
   { path: '', component: LocationsComponent },
   { path: 'locations', component: LocationsComponent },
   { path: 'accounts', component: AccountsComponent },
   { path: 'groups', component: GroupsComponent },
+  { path: 'managers', component: ManagersComponent },
   { path: 'your-settings', component: YoursettingsComponent},
   { path: 'license', component: LicenseComponent},
   { path: 'settings', component: SettingsComponent},

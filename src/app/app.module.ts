@@ -28,6 +28,7 @@ import { YoursettingsComponent } from './yoursettings/yoursettings.component';
 import { YourprivatesettingsComponent } from './yourprivatesettings/yourprivatesettings.component';
 import { AddMemberComponent } from './groups/add-member/add-member.component';
 import { EditGroupComponent } from './groups/edit-group/edit-group.component';
+import { ManagersComponent } from './managers/managers.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { EditGroupComponent } from './groups/edit-group/edit-group.component';
       YoursettingsComponent,
       YourprivatesettingsComponent,
       AddMemberComponent,
-      EditGroupComponent
+      EditGroupComponent,
+      ManagersComponent
    ],
   imports: [
       BrowserModule,

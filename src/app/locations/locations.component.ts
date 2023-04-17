@@ -104,7 +104,7 @@ export class LocationsComponent implements OnInit {
 
     this.clickLocation =  click_location
   }
-  addLocation(newLocation : string){
+  addLocation(newLocation : any){
 
      this.locationService.addLocation(newLocation).subscribe(responseData => {
         this.locationService.getLocations().subscribe(locations => {
