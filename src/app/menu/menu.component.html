@@ -4,8 +4,8 @@
 <input id="tab9" type="radio" name="tabs">
 <label class="location_label" for="tab9"  (click)="onSelect('groups')">Groups</label>
 
-<input id="tab10" type="radio" name="tabs">
-<label class="location_label" for="tab10"  (click)="onSelect('managers')">Managers</label>
+<input id="tab10" type="radio" name="tabs" *ngIf="permission!='manager'">
+<label class="location_label" for="tab10"  *ngIf="permission!='manager'" (click)="onSelect('managers')">Managers</label>
 
 <input id="tab3" type="radio" name="tabs">
 <label class="location_label" for="tab3" (click)="onSelect('accounts')">Accounts</label>

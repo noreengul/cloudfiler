@@ -18,6 +18,9 @@ export class UserService {
   data$ = this.userData.asObservable();
 
   updateUserData(data: any) {
+    console.log("===============");
+    console.log(data.is_manager);
+    this.authService.setUserPersmission(data.is_manager ? 'manager':'user');
     this.userData.next(data);
   }
 

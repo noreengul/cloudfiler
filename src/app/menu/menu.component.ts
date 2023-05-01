@@ -9,9 +9,14 @@ import {AuthService} from "../shared/auth.sevice";
 })
 export class MenuComponent implements OnInit {
 
+  permission:any = "manager";
+
   constructor( private route: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
+    //this.permission = this.authService.getUserPermission;
+    console.log("-----------");
+    console.log( this.permission);
   }
 
   onSelect(feature:string ){
