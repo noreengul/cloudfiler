@@ -126,7 +126,7 @@ input {
 
 @media screen and (max-width: 1640px)  and (min-width: 1460px) {
   .location_label{
-    padding: 0.8% 2.4%;
+    padding: 0.8% 2%;
     margin-right: 0px;
   }
 }
