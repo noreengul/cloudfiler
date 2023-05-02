@@ -1,26 +1,83 @@
-<a class="add_group" (click)="open(modalData)"> <img width="20" height="20" src = "./../assets/images/plus-square-grey.svg" alt="logo"/>  <span class="icon_text" > Add a memeber</span></a>
+<a class="add_group" (click)="open(modalData)"> <img width="20" height="20"
+    src="./../assets/images/plus-square-grey.svg" alt="logo" /> <span class="icon_text"> Add a memeber</span></a>
 
 
 <ng-template #modalData let-modal class="add_location">
-    <div class="modal-header">
+  <!-- <div class="modal-header">
       <div class="row edit_row"   >
         <div class="col-md-5  col-xs-4 "><img width="30" height="30" src = "./../assets/images/folder-open.svg" alt="logo"/>&nbsp;&nbsp;<span class="head_title">Add Group Member </span></div>
         <div class="col-md-7 col-xs-4" >  <img  style="float:right" width="30" height="30" src = "./../assets/images/Help-black.svg" alt="logo"/></div>
       </div>
-    </div>
-   <form #postForm="ngForm" (ngSubmit)="onAddGroupMember()"  >
-      <div class="modal-body">
-        <div class="form-group">
+
+    </div> -->
+
+  <form #postForm="ngForm" (ngSubmit)="onAddGroupMember()">
+    <div class="modal-body">
+      <div class="modalheading">
+        <img width="50" height="50" src="./../assets/images/Group.svg" alt="logo">
+
+        <h4>Groups</h4>
+      </div>
+      <!-- <div class="form-group">
           <label for="InputLocation">Group Member Email</label>
           <input  [ngClass]="{  'in-valid': memberError } "   [(ngModel)]="memberDescription" type="text" class="form-control" name="location" id="InputLocation" aria-describedby="emailHelp" placeholder="Enter Group Member Name">
+        </div> -->
+      <div class="people_div">
+        <div class="people_heading">
+          <h5>People</h5>
+         <div class="filter_input">
+          <input type="text" placeholder="Type here to filter">
+          <img src="./../assets/images/filter-grey-outline.svg" alt="logo">
+         </div>
         </div>
-      </div>
-      <div class="modal-footer">
-        <button type="submit" class="btn btn-primary">Add</button>
-        <a (click)="modal.close('Done click')"  class="btn btn-default">Close</a>
-      </div>
-    </form>
-  
-  </ng-template>
 
+      <div class="emaillist">
+        <img _ngcontent-gjg-c120=""
+          src="./../assets/images/checkbox-unchecked-outline.svg" alt="logo">
+        <span>
+          Sandy.shore@mybusiness.com
+         </span>
 
+      </div>
+      <div class="emaillist">
+        <img _ngcontent-gjg-c120=""
+          src="./../assets/images/checkbox-unchecked-outline.svg" alt="logo">
+        <span>
+          Head.hunter@mybusiness.com
+         </span>
+
+      </div>
+      <div class="emaillist">
+        <img _ngcontent-gjg-c120=""
+          src="./../assets/images/checkbox-checked-outline.svg" alt="logo">
+        <span>
+          Peter.out@mybusiness.com
+         </span>
+
+      </div>
+      <div class="emaillist">
+        <img _ngcontent-gjg-c120=""
+          src="./../assets/images/checkbox-unchecked-outline.svg" alt="logo">
+        <span>
+          Grant.bail@mybusiness.com
+         </span>
+
+      </div>
+      <div class="emaillist">
+        <img _ngcontent-gjg-c120=""
+          src="./../assets/images/checkbox-unchecked-outline.svg" alt="logo">
+        <span>
+          April.showers@mybusiness.com
+         </span>
+
+      </div>
+    </div>
+    </div>
+    <div class="modal-footer">
+
+      <a (click)="modal.close('Done click')" class="btn btn-default">Cancel</a>
+      <button type="submit" class="btn btn-primary">Ok</button>
+    </div>
+  </form>
+
+</ng-template>
