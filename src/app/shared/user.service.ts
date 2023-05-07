@@ -24,6 +24,19 @@ export class UserService {
     this.userData.next(data);
   }
 
+  getAllUsers(){
+
+    this.token = this.authService.getToken();
+    return this.http.get ( this.APP_URL +'users' , {
+      headers: {  "Authorization": "Bearer "+this.token}
+    }).
+    pipe(
+      map( (responseData:any) => {
+        return   responseData;
+      })
+    );
+  }
+
   getUserInfo(){
 
     this.token=this.authService.getToken();

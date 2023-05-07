@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupService } from '../shared/group.service';
 import {Group} from "../shared/group.model";
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-groups',
@@ -9,12 +10,12 @@ import {Group} from "../shared/group.model";
 })
 export class GroupsComponent implements OnInit {
 
-  constructor(private groupService:GroupService) { }
+  constructor(private groupService:GroupService, private userService : UserService) { }
 
   groups !: Group[];
   activeGroup : any;
   selectGroup : any;
-   
+  userLists = []; 
 
   ngOnInit(): void {
 
@@ -27,6 +28,12 @@ export class GroupsComponent implements OnInit {
         //this.selectGroup=groups[0];
         this.clickGroup(groups[0].group_id);
       }
+    });
+
+    this.userService.getAllUsers().subscribe(users => {
+      console.log("aaaaaaaaaaaaaa");
+      console.log(users);
+      this.userLists = users;
     });
   }
 
@@ -48,7 +55,7 @@ export class GroupsComponent implements OnInit {
   }
 
   addGroup( newGroup:any){
-    
+     alert("group_add");
     this.groupService.addGroup(newGroup).subscribe(()  => {
       this.groupService.getGroups().subscribe(groups => {
       

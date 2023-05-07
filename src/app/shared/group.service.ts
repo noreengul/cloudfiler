@@ -45,12 +45,29 @@ export class GroupService{
         });
   }
 
-  addGroupMember(newGroupMember : string,groupId: number){
-    
-    const body =  [{ email: newGroupMember }];
-        return this.http.post( this.APP_URL +'groups/'+groupId+'/members',  (body),{
-            headers: { "Authorization": "Bearer "+this.Token }
-        });
+  addGroupMember(newGroupMember : any,groupId: number){
+    console.log("new group data");
+    // console.log(newGroupMember);
+    // console.log(group.users);
+    // // let body =  {};
+    // if(group.users.length > 0){
+    //   group.users.forEach((groupMember:any,index:any)=>{
+    //     console.log("7777");
+    //     console.log(groupMember);
+    //     let memberData = newGroupMember.filter((member: any) =>
+    //       member.email.includes(groupMember.email)
+    //     );
+    //     console.log("333");
+    //     console.log(memberData);
+    //     if(memberData.length == 0){
+    //       this.deleteGroupMember(groupId,groupMember[0].email);
+    //     }
+    //   });
+    // }
+
+    return this.http.post( this.APP_URL +'groups/'+groupId+'/members',  (newGroupMember),{
+        headers: { "Authorization": "Bearer "+this.Token }
+    });
   }
 
 
@@ -63,9 +80,9 @@ export class GroupService{
 
   deleteGroupMember(id:number,email:string){
 
-    //return this.http.delete( this.APP_URL+'groups/'+id,{
-      //headers: {  "Authorization": "Bearer "+this.Token }
-    //});
+    return this.http.delete( this.APP_URL+'groups/'+id+"/members/"+email,{
+      headers: {  "Authorization": "Bearer "+this.Token }
+    });
   }
 
   updateGroup(group:any){
