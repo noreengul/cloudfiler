@@ -19,7 +19,7 @@ export class AddMemberComponent implements OnInit {
   @Input() allGroups:any;
   preSelectedUsers:any;
   @Input() allUserLists: any;
-
+ 
   constructor(private modalService: NgbModal ) { 
    
   }
