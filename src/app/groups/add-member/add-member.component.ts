@@ -12,9 +12,11 @@ export class AddMemberComponent implements OnInit {
 
   closeModal='';
   memberDescription !: string;
-  memberError=false;
+  memberError=false; 
   @Output() groupMemberToAdd = new EventEmitter<string>();
   @Input() selectedMembers: any;
+  @Input() selectedGroup:any;
+  @Input() allGroups:any;
   preSelectedUsers:any;
   @Input() allUserLists: any;
 
@@ -22,11 +24,10 @@ export class AddMemberComponent implements OnInit {
    
   }
 
-  ngOnInit(): void {
-    console.log("444444444444");
-    console.log(this.preSelectedUsers);
-    this.preSelectedUsers  = [...this.selectedMembers];
-    //this.preSelectedUsers = this.selectedMembers;
+  ngOnInit(): void { 
+    this.preSelectedUsers  = [...this.selectedMembers];  
+    console.log("sssssssss",this.selectedGroup);
+    console.log("aaaaa",this.allGroups);
   }
 
   open(content:any) {
@@ -43,36 +44,21 @@ export class AddMemberComponent implements OnInit {
 
   private getDismissReason(reason: any): string {
      
-    if (reason === ModalDismissReasons.ESC) {
-      console.log("fff");
+    if (reason === ModalDismissReasons.ESC) { 
       return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
-      console.log("aaa");
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) { 
       this.selectedMembers  = [...this.preSelectedUsers];
-      console.log("----hhh-----");
-      console.log(this.preSelectedUsers);
-      console.log(this.selectedMembers);
-      //this.selectedMembers = this.preSelectedUsers;
-      //console.log(this.preSelectedUsers);
-      //console.log(this.selectedMembers);
       return 'by clicking on a backdrop';
     } else {
-      console.log("111");
       return `with: ${reason}`;
     }
   }
 
   onAddGroupMember(){
     
-    this.memberError=false;
-    if(this.selectedMembers.length>0){
-      
-        this.groupMemberToAdd.emit(this.selectedMembers);
-        this.modalService.dismissAll();
-    }else{
-     
-       this.memberError=true;
-    }
+    this.memberError=false; 
+      this.groupMemberToAdd.emit(this.selectedMembers);
+      this.modalService.dismissAll(); 
   }
 
   checkedImage(user:any){
@@ -90,21 +76,13 @@ export class AddMemberComponent implements OnInit {
 
   clickMember(user:any, status:any){
     if(status){
-      let memberData = this.selectedMembers.forEach((member: any, index:any) =>{
-        console.log(index);
-        console.log(member);
+      let memberData = this.selectedMembers.forEach((member: any, index:any) =>{ 
         if(member.email==user.email){
           this.selectedMembers.splice(index, 1);
-        }
-        
-    });
-
-     
-      //this.allSelectedUsers.
+        } 
+      }); 
     }else{
       this.selectedMembers.push({"email":user.email});
-    }
-    
-  }
-
+    } 
+  } 
 }
