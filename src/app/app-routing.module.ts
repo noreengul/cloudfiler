@@ -11,17 +11,18 @@ import {SettingsComponent} from "./settings/settings.component";
 import {YoursettingsComponent} from "./yoursettings/yoursettings.component";
 import {YourprivatesettingsComponent} from "./yourprivatesettings/yourprivatesettings.component";
 import { ManagersComponent } from './managers/managers.component';
+import { AuthguardGuard } from "./shared/authguard.guard";
 
 const routes: Routes = [
-  { path: '', component: LocationsComponent },
-  { path: 'locations', component: LocationsComponent },
-  { path: 'accounts', component: AccountsComponent },
-  { path: 'groups', component: GroupsComponent },
-  { path: 'managers', component: ManagersComponent },
-  { path: 'your-settings', component: YoursettingsComponent},
-  { path: 'license', component: LicenseComponent},
-  { path: 'settings', component: SettingsComponent},
-  { path: 'your-private-settings', component: YourprivatesettingsComponent},
+  { path: '', component: LocationsComponent,canActivate:[AuthguardGuard] },
+  { path: 'locations', component: LocationsComponent,canActivate:[AuthguardGuard]},
+  { path: 'accounts', component: AccountsComponent ,canActivate:[AuthguardGuard]},
+  { path: 'groups', component: GroupsComponent,canActivate:[AuthguardGuard ]},
+  { path: 'managers', component: ManagersComponent ,canActivate:[AuthguardGuard]},
+  { path: 'your-settings', component: YoursettingsComponent,canActivate:[AuthguardGuard]},
+  { path: 'license', component: LicenseComponent,canActivate:[AuthguardGuard]},
+  { path: 'settings', component: SettingsComponent,canActivate:[AuthguardGuard]},
+  { path: 'your-private-settings', component: YourprivatesettingsComponent,canActivate:[AuthguardGuard]},
 
   { path: 'notfound', pathMatch: 'full',
     component: PagenotfoundComponent },

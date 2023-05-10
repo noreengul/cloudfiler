@@ -38,7 +38,7 @@ export class UserService {
   }
 
   getUserInfo(){
-
+    
     this.token=this.authService.getToken();
 
     return this.http.get ( this.APP_URL + 'user' , {
@@ -50,8 +50,10 @@ export class UserService {
       }),
       catchError( err => {
         if (err.status === 401 || !this.token) {
+          this.token= "";
           this.router.navigate(['accessdenied']);
         }
+        this.token="";
         this.router.navigate(['notfound']);
         const error = err.error.message || err.statusText;
         return  (error);
