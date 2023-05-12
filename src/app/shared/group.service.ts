@@ -15,6 +15,7 @@ export class GroupService{
   Token =  this.authService.getToken();
 
   getGroups(){
+    console.log("aaaaaaaaaaafdfffff","ds");
     return this.http.get ( this.APP_URL +'groups' , {
       headers: {  "Authorization": "Bearer "+this.Token}
     }).

@@ -11,34 +11,70 @@ import {AuthService} from "./shared/auth.sevice";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'cloudfiler';
+  title = 'cloudfiler'; 
+  tokeStatus = false;
+  hideMenu = false;
 
-
-  constructor( private  route : ActivatedRoute , private authService: AuthService , private router : Router  ) {
+  constructor( private  route : ActivatedRoute , private userService: UserService, private authService: AuthService , private router : Router  ) {
     console.log('Environment config');
   }
   ngOnInit(): void {
 
     let token = this.getParameterByName('access_token');
-    if(token){
-      this.authService.setToken(token);
-    }else{
-      this.authService.setToken("");
-    }
+    //alert("ssdsd");
+    // if(token){
+    //   this.authService.setToken(token);
+    // }else{
+    //   this.authService.setToken("");
+    // }
+ 
+    this.loadUerData(token);
+    
+   
+    
   }
-
-
+  
   getParameterByName(name: any) {
     let url = window.location.href;
     name = name.replace(/[[]]/g, "\$&");
     var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
       results = regex.exec(url);
+
+      console.log("fff",url);
     if (!results) return null;
     if (!results[2]) return '';
     return decodeURIComponent(results[2]);
   }
 
+  async loadUerData(token:any)
+  {
+    
+    const httpData = await this.userService.checkUserAuthication(token).toPromise().catch((error)=>{
+      this.hideMenu = true; 
+      this.tokeStatus = true;
+      console.log( this.tokeStatus); 
+      this.router.navigate(['/notfound'])
+      return false;
+    });
 
+    if(httpData ){
+      this.tokeStatus = true; 
+      console.log("aaaaaaaaa",httpData);
+      this.authService.setToken(token); 
+      console.log("user",httpData);
+     // this.authService.setUserPersmission(httpData['is_manager'] ? 'manager':'user');
+      this.authService.setUserData(httpData);   
+     }//else{
+        
+        //this.router.navigate(['notfound']);
+    //}
+   
+   // this.userService.checkUserAuthication(token).subscribe(user => {
+   //   console.log("user",user);
+      //this.userDetail = user ;
+    //  this.userService.updateUserData(user); 
+    //});
+  }
 
 }
 

@@ -1,7 +1,7 @@
-<app-header  ></app-header>
-<main>
-  <app-menu  ></app-menu>
-  <section class="content">
+<app-header  *ngIf="tokeStatus && !hideMenu"></app-header> 
+<main *ngIf="tokeStatus  ">
+  <app-menu  *ngIf="tokeStatus && !hideMenu"></app-menu>
+  <section class="content" >
     <router-outlet  ></router-outlet>
   </section>
 </main>

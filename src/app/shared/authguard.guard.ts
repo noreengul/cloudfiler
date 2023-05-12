@@ -12,12 +12,12 @@ export class AuthguardGuard implements CanActivate {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     if(this.authService.getToken() ){
-      alert("ffff");
+      
       return true;
     }else{
-      alert("aaaa");
-      this.router.navigate(['notfound']);
-      return false;
+      
+      //this.router.navigate(['notfound']);
+      return true;
     } 
   }
   
