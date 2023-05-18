@@ -26,34 +26,69 @@
                             <div class="d-flex direction_sm_column">
 
                                 <div class="uponfile">
-                                    <img _ngcontent-gjg-c120="" width="30" height="30"
-                                        src="./../assets/images/checkbox-checked-outline.svg" alt="logo">
-                                    <span>Upon filing incoming messages,
-                                        <br>
-                                        delete them from your inbox</span>
-                                    <div class="tooltipwrap">
-                                        <img _ngcontent-nil-c120="" width="30" height="30"
-                                            src="./../assets/images/info.svg" alt="logo">
-                                        <span class="tooltiptext">
-                                            <b> Un-checked behaviour:</b> <br>
-                                            Messages are marked with a category flag and the
-                                            date is added to the subject line in form <b>[Filed on
-                                                2038-05-23]</b>
-                                            <br />
-                                            <b>Checked behaviour:</b> <br>
-                                            The message is deleted from your inbox upon
-                                            filing
+
+                                    <span>Upon filing messages:
                                         </span>
-                                    </div>
+                                        <div class="dropdown show-data setting_dropdown" >
+                                            <a  class="dropdown-toggle user-email" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false"  >
+
+                                                Move to ‘Filed’ folder
+
+                                               <i class="fas fa-caret-down"></i>
+                                              </a>
+                                            <ul class="dropdown-menu " id="testDropdown">
+                                              <li><a href="#">dropdwon text</a></li>
+                                              <li><a href="#">dropdwon text</a></li>
+                                              <li><a href="#">dropdwon text</a></li>
+                                            </ul>
+                                          </div>
                                 </div>
                                 <div class="allowuser">
-                                    <h5> Allow user
-                                        to edit</h5>
+                                    <h5> Prevent <br/> user edits
+                                    </h5>
                                     <img _ngcontent-gjg-c120="" width="30" height="30"
-                                        src="./../assets/images/checkbox-checked-outline.svg" alt="logo">
+                                        src="./../assets/images/padlock.svg" alt="logo">
 
                                 </div>
                             </div>
+
+
+
+
+                                  <div class="d-flex">
+
+                                    <div class="uponfile">
+                                      <img _ngcontent-gjg-c120="" width="30" height="30"
+                                        src="./../assets/images/checkbox-checked-outline.svg" alt="logo">
+                                      <span>Mark filed messages
+                                    </span>
+                                        <div class="tooltipwrap">
+                                          <img _ngcontent-nil-c120="" width="30" height="30"
+                                              src="./../assets/images/info.svg" alt="logo">
+                                          <span class="tooltiptext">
+                                              <b> Checked behaviour:</b>
+                                              <br>
+                                              Messages are marked with a CloudFiler category and the date is added to the subject line in the format
+                                              <b>
+                                                [Filed on 2038-05-23]
+                                              </b>
+
+
+                                              <br />
+                                              <b>Checked behaviour:</b> <br>
+                                              The subject line is not changed and no category is added
+
+                                          </span>
+                                      </div>
+                                    </div>
+                                    <div class="allowuser mt-5">
+
+                                      <img _ngcontent-gjg-c120="" width="30" height="30"
+                                        src="./../assets/images/padlock-open.svg" alt="logo">
+
+                                    </div>
+                                  </div>
+
                         </div>
                     </div>
 
@@ -70,10 +105,11 @@
 
 
             </div>
-            <div class="col-md-12">
-                <button class="btn btn-reset float-right">Reset all users to these settings</button>
-            </div>
+            <span style="float:right; margin:10px">Changes have been saved <img width="30" height="30"
+                src="./../assets/images/save.svg" alt="logo" />
+            </span>
         </div>
+
     </div>
 
 </div>

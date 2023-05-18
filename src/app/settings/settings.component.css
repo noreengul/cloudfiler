@@ -58,10 +58,9 @@
 
 .tooltipwrap .tooltiptext {
   visibility: hidden;
-  width: 405px;
-  background-color: #d4bee5;
+  width: 300px;
+  background-color: #fff;
   color: black;
-  border-radius: 6px;
   padding: 10px;
   position: absolute;
   z-index: 1;
@@ -70,6 +69,10 @@
   margin-left: -20px;
   opacity: 0;
   transition: opacity 0.3s;
+  border: solid 1px #9c9c9c;
+    box-shadow: 6px 7px 7px 0px #9c9c9c;
+    font-size: 14px;
+    font-weight: normal;
 }
 
 .tooltipwrap .tooltiptext::after {
@@ -85,4 +88,26 @@
 .tooltipwrap:hover .tooltiptext {
   visibility: visible;
   opacity: 1;
+}
+
+
+.setting_dropdown a.dropdown-toggle {
+  font-size: 16px;
+  color: #000;
+  border: solid 2px gray;
+  padding: 6px 15px;
+  text-decoration: none;
+}
+.setting_dropdown a i{
+  font-size: 26px;
+  color: #7030A0;
+  vertical-align: middle;
+  margin-left: 20px;
+  margin-top: -4px;
+}
+.setting_dropdown .dropdown-menu{
+  right: 0;
+}
+.mt-5{
+  margin-top: 5rem;
 }
