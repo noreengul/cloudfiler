@@ -12,6 +12,7 @@ export class AuthService {
   //private token = "Bearer 8450b416-06e7-4dec-ae2e-52cb8166b275";
   private token = "";
   private user_permission="";
+  private userData = [];
   constructor(  private  route : ActivatedRoute,private router: Router) { }
 
   getToken(){
@@ -26,13 +27,20 @@ export class AuthService {
     return this.BASE_URL;
   }
 
-  setUserPersmission(permission:any){
-    console.log("!!!!!!!!!!!!!!1");
-    console.log(permission);
+  setUserPersmission(permission:any){ 
     this.user_permission = permission;
   }
 
   getUserPermission(){
     return this.user_permission;
   }
+
+  setUserData(data:any){
+    this.userData=data;
+  }
+
+  getUserData( ){
+    return this.userData;
+  }
+  
 }

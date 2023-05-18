@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {LocationService} from "../locations/location.service";
 import {UserService} from "../shared/user.service";
+import { AuthService } from '../shared/auth.sevice';
 
 @Component({
   selector: 'app-header',
@@ -10,14 +11,12 @@ import {UserService} from "../shared/user.service";
 export class HeaderComponent implements OnInit {
 
   userDetail: any ;
-  constructor(private userService:UserService) { }
+  constructor(private authService:AuthService) { }
 
   ngOnInit(): void {
-
-    this.userService.getUserInfo().subscribe(user => {
-      this.userDetail = user ;
-      this.userService.updateUserData(user);
-    });
+    this.userDetail = this.authService.getUserData();
+    console.log("ssbbbbbbbbbbbss",this.userDetail);
+    
   }
 
 }

@@ -52,7 +52,7 @@ tr:has(> td.edit_location_td) {
 
 }
 .edit_location_tr .permission_change{
-   //border: black 1px solid !important;
+   /*border: black 1px solid !important;*/
 }
 
 .edit_location_tr .permission_change .allow_edit{

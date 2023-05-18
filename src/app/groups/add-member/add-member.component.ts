@@ -1,5 +1,6 @@
-import { Component,EventEmitter, OnInit, Output} from '@angular/core';
+import { Component,EventEmitter, OnInit, Output, Input} from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UserService } from 'src/app/shared/user.service';
 
 
 @Component({
@@ -11,12 +12,22 @@ export class AddMemberComponent implements OnInit {
 
   closeModal='';
   memberDescription !: string;
-  memberError=false;
+  memberError=false; 
   @Output() groupMemberToAdd = new EventEmitter<string>();
+  @Input() selectedMembers: any;
+  @Input() selectedGroup:any;
+  @Input() allGroups:any;
+  preSelectedUsers:any;
+  @Input() allUserLists: any;
+ 
+  constructor(private modalService: NgbModal ) { 
+   
+  }
 
-  constructor(private modalService: NgbModal) { }
-
-  ngOnInit(): void {
+  ngOnInit(): void { 
+    this.preSelectedUsers  = [...this.selectedMembers];  
+    console.log("sssssssss",this.selectedGroup);
+    console.log("aaaaa",this.allGroups);
   }
 
   open(content:any) {
@@ -24,14 +35,19 @@ export class AddMemberComponent implements OnInit {
     this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((res) => {
       this.closeModal = `Closed with: ${res}`;
     }, (res) => {
+      
       this.closeModal = `Dismissed ${this.getDismissReason(res)}`;
     });
   }
 
+   
+
   private getDismissReason(reason: any): string {
-    if (reason === ModalDismissReasons.ESC) {
+     
+    if (reason === ModalDismissReasons.ESC) { 
       return 'by pressing ESC';
-    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+    } else if (reason === ModalDismissReasons.BACKDROP_CLICK) { 
+      this.selectedMembers  = [...this.preSelectedUsers];
       return 'by clicking on a backdrop';
     } else {
       return `with: ${reason}`;
@@ -40,15 +56,33 @@ export class AddMemberComponent implements OnInit {
 
   onAddGroupMember(){
     
-    this.memberError=false;
-    if(this.memberDescription){
-      
-        this.groupMemberToAdd.emit(this.memberDescription);
-        this.modalService.dismissAll();
-    }else{
-     
-       this.memberError=true;
-    }
+    this.memberError=false; 
+      this.groupMemberToAdd.emit(this.selectedMembers);
+      this.modalService.dismissAll(); 
   }
 
+  checkedImage(user:any){
+    
+    let memberData = this.selectedMembers.filter((member: any) =>
+        member.email.includes(user)
+      );
+
+    if(memberData.length >0) { 
+      return true;
+     }else{ 
+      return false;
+    };
+  }
+
+  clickMember(user:any, status:any){
+    if(status){
+      let memberData = this.selectedMembers.forEach((member: any, index:any) =>{ 
+        if(member.email==user.email){
+          this.selectedMembers.splice(index, 1);
+        } 
+      }); 
+    }else{
+      this.selectedMembers.push({"email":user.email});
+    } 
+  } 
 }

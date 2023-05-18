@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GroupService } from '../shared/group.service';
 import {Group} from "../shared/group.model";
+import { UserService } from '../shared/user.service';
 
 @Component({
   selector: 'app-groups',
@@ -9,12 +10,12 @@ import {Group} from "../shared/group.model";
 })
 export class GroupsComponent implements OnInit {
 
-  constructor(private groupService:GroupService) { }
+  constructor(private groupService:GroupService, private userService : UserService) { }
 
   groups !: Group[];
   activeGroup : any;
-  selectGroup : any;
-   
+  selectGroup : any; 
+  userLists = []; 
 
   ngOnInit(): void {
 
@@ -28,6 +29,12 @@ export class GroupsComponent implements OnInit {
         this.clickGroup(groups[0].group_id);
       }
     });
+
+    this.userService.getAllUsers().subscribe(users => {
+      console.log("aaaaaaaaaaaaaa");
+      console.log(users);
+      this.userLists = users;
+    });
   }
 
   clickGroup(groupId:number){
@@ -36,19 +43,33 @@ export class GroupsComponent implements OnInit {
     this.groupService.getGroupsMembers(groupId).subscribe(groups => {
       
       this.selectGroup = groups;
-    });
-
+     }); 
   }
 
-  addMember(newMebers:any){
-    
-    this.groupService.addGroupMember(newMebers,this.activeGroup).subscribe(()  => {
-      this.clickGroup( this.activeGroup);
-    });
+  addMember(newMebers:any){ 
+    this.groupService.getGroupsMembers(this.activeGroup).subscribe(group => {
+      if(group.users.length>0){ 
+        group.users.forEach((groupMember:any,index:any)=>{  
+          this.groupService.deleteGroupMember(this.activeGroup,groupMember.email).subscribe(response => {
+              if(group.users.lengt == index+1 ){
+                this.groupService.addGroupMember(newMebers,this.activeGroup).subscribe(()  => { 
+                  console.log("single added"); 
+                   this.clickGroup( this.activeGroup);
+                 });
+              }
+          });  
+        });  
+      }else{
+        this.groupService.addGroupMember(newMebers,this.activeGroup).subscribe(()  => { 
+         console.log("single added"); 
+          this.clickGroup( this.activeGroup);
+        });
+      }   
+    });  
   }
 
   addGroup( newGroup:any){
-    
+     
     this.groupService.addGroup(newGroup).subscribe(()  => {
       this.groupService.getGroups().subscribe(groups => {
       

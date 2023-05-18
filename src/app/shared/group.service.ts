@@ -15,6 +15,7 @@ export class GroupService{
   Token =  this.authService.getToken();
 
   getGroups(){
+    console.log("aaaaaaaaaaafdfffff","ds");
     return this.http.get ( this.APP_URL +'groups' , {
       headers: {  "Authorization": "Bearer "+this.Token}
     }).
@@ -44,16 +45,15 @@ export class GroupService{
             headers: { "Authorization": "Bearer "+this.Token }
         });
   }
-
-  addGroupMember(newGroupMember : string,groupId: number){
+  
+  addGroupMember(newGroupMember : any,groupId: number){
     
-    const body =  [{ email: newGroupMember }];
-        return this.http.post( this.APP_URL +'groups/'+groupId+'/members',  (body),{
-            headers: { "Authorization": "Bearer "+this.Token }
-        });
+    console.log("Data",newGroupMember);           
+    return this.http.post( this.APP_URL +'groups/'+groupId+'/members',  ( newGroupMember),{
+      headers: { "Authorization": "Bearer "+this.Token }
+    });  
   }
-
-
+ 
   deleteGroup(id:string){
      
     return this.http.delete( this.APP_URL+'groups/'+id,{
@@ -61,11 +61,10 @@ export class GroupService{
     });
   }
 
-  deleteGroupMember(id:number,email:string){
-
-    //return this.http.delete( this.APP_URL+'groups/'+id,{
-      //headers: {  "Authorization": "Bearer "+this.Token }
-    //});
+  deleteGroupMember(id:number,email:string){ 
+    return this.http.delete( this.APP_URL+'groups/'+id+"/members/"+email,{
+      headers: {  "Authorization": "Bearer "+this.Token }
+    });
   }
 
   updateGroup(group:any){

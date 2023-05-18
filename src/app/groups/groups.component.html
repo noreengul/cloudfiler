@@ -92,7 +92,7 @@
               </div>
            </div>
           
-           <div class="add_group_btn"><app-add-member (groupMemberToAdd)="addMember($event)"></app-add-member> </div>
+           <div class="add_group_btn"><app-add-member  [allGroups]="groups" [allUserLists]="userLists" [selectedGroup]="selectGroup"  [selectedMembers]="selectGroup.users" (groupMemberToAdd)="addMember($event)"></app-add-member> </div>
         </div>
        </div>
       </div>
