@@ -65,7 +65,7 @@ export class LocationsComponent implements OnInit {
 
   changeGroupPermission(permission:string, groupId: string, locationId:string ){
 
-    if(window.confirm('Are sure you want to update the group permissions?')){
+    //if(window.confirm('Are sure you want to update the group permissions?')){
       this.locationService.updateGroupPermission( {
         permission: permission,
         groupId: groupId ,
@@ -79,7 +79,7 @@ export class LocationsComponent implements OnInit {
           });
         }
       });
-    }
+    //}
   }
   changePermission(groupId:any){
     if(this.is_manager){
