@@ -92,6 +92,7 @@ export class AddMemberComponent implements OnInit {
       this.selectedMembers.push({"email":user.email});
     } 
   } 
+  
 
   filterGroup(value:string){ 
     if( value!==undefined && value!='' && value !=null) {

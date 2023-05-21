@@ -13,6 +13,7 @@ import {UserService} from "../shared/user.service";
 })
 
 export class LocationsComponent implements OnInit {
+  
   filter: any;
   searchTerm:any;
   openLocation:any;
