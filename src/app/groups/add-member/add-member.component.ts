@@ -1,7 +1,7 @@
 import { Component,EventEmitter, OnInit, Output, Input} from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from 'src/app/shared/user.service';
-
+ 
 
 @Component({
   selector: 'app-add-member',
@@ -13,6 +13,10 @@ export class AddMemberComponent implements OnInit {
   closeModal='';
   memberDescription !: string;
   memberError=false; 
+  searchGroup:any;
+  searchMember:any;
+  AllGroupCopy:any;
+  AllMembersCopy:any;
   @Output() groupMemberToAdd = new EventEmitter<string>();
   @Input() selectedMembers: any;
   @Input() selectedGroup:any;
@@ -26,6 +30,9 @@ export class AddMemberComponent implements OnInit {
 
   ngOnInit(): void { 
     this.preSelectedUsers  = [...this.selectedMembers];  
+    this.AllGroupCopy =   (this.allGroups);
+    this.AllMembersCopy =   (this.allUserLists);
+
     console.log("sssssssss",this.selectedGroup);
     console.log("aaaaa",this.allGroups);
   }
@@ -85,4 +92,26 @@ export class AddMemberComponent implements OnInit {
       this.selectedMembers.push({"email":user.email});
     } 
   } 
+  
+
+  filterGroup(value:string){ 
+    if( value!==undefined && value!='' && value !=null) {
+      this.allGroups = this.AllGroupCopy.filter((groups: any) =>
+      groups.description.toLowerCase().includes(value.toLowerCase())
+      );
+    }else{ 
+      this.allGroups = this.AllGroupCopy;
+    }
+  }
+
+  filterMembers(value:string){ 
+    if( value!==undefined && value!='' && value !=null) {
+      this.allUserLists = this.AllMembersCopy.filter((member: any) =>
+      member.email.toLowerCase().includes(value.toLowerCase())
+      );
+    }else{
+      this.allUserLists= this.AllMembersCopy;
+    }
+  }
+
 }

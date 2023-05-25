@@ -1,7 +1,8 @@
 <a class="add_group" (click)="open(modalData)"> <img width="20" height="20"
-    src="./../assets/images/plus-square-grey.svg" alt="logo" /> <span class="icon_text"> Add a memeber</span></a>
+    src="./../assets/images/plus-square-grey.svg" alt="logo" /> <span class="icon_text"> Add a member</span></a>
 
 
+    
 <ng-template #modalData let-modal class="add_location">
   <!-- <div class="modal-header">
       <div class="row edit_row"   >
@@ -27,7 +28,7 @@
         <div class="people_heading">
           <h5>Groups</h5>
           <div class="filter_input">
-            <input type="text" placeholder="Type here to filter">
+            <input type="text" placeholder="Type here to filter" [(ngModel)]="searchGroup" (input)="filterGroup(searchGroup)" name="groups" >
             <img src="./../assets/images/filter-grey-outline.svg" alt="logo">
           </div>
         </div>            
@@ -45,7 +46,7 @@
         <div class="people_heading">
           <h5>People</h5>
          <div class="filter_input">
-          <input type="text" placeholder="Type here to filter">
+          <input type="text" placeholder="Type here to filter" [(ngModel)]="searchMember" (input)="filterMembers(searchMember)" name="members">
           <img src="./../assets/images/filter-grey-outline.svg" alt="logo">
          </div>
         </div>            
