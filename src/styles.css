@@ -204,7 +204,8 @@ img.help_image {
   width: 24px;
 }
 .w_sm_32{
-  width: 32px;
+  width: 26px;
+  margin-right: 6px;
 }
 .main-account-container span.rightext img, .licenses_table table tr td img {
   width: 20px;
@@ -214,11 +215,17 @@ img.help_image {
   padding-left: 15px !important;
 }
 .uponfile {
-  margin-top: 0 !important;
+  /* margin-top: 0 !important; */
   display: block !important;
 }
-.direction_sm_column{
+.direction_sm_column {
   flex-direction: column;
+  text-align: left;
+  align-items: baseline !important;
+}
+.uponfile span{
+  margin: 0 0 10px 0 !important;
+  display:inline-block;
 }
 .allowuser {
   margin-left: 0 !important;
@@ -240,7 +247,11 @@ span.tooltiptext {
   margin-left: 2.5rem !important;
 }
 .title-div .title{
-  font-size: 17px !important;
+ font-size: 17px !important;
+    margin-left: 0 !important;
+}
+section {
+  padding: 15px;
 }
 main{
   padding: 20px;

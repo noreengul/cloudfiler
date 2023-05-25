@@ -1,13 +1,13 @@
 <div class="row ">
-  <div class="col-md-7">
-    <img width="50" height="50" src="./../assets/images/Group.svg" alt="logo" />
+  <div class="col-sm-7 col-xs-10">
+    <img width="50" height="50" src="./../assets/images/Group.svg" class="w_sm_32" alt="logo" />
     <div class="title-div">
       <span class="title">Groups</span>
     </div>
   </div>
-  <div class="col-md-4  ">
+  <div class="col-sm-4 col-xs-1">
   </div>
-  <div class="col-md-1  ">
+  <div class="col-sm-1 col-xs-1">
     <a target="_blank" href="https://help.cloudfiler.io/"><img class="float-right help_image " width="40" height="40"
         src="./../assets/images/Help-black.svg" alt="help" /></a>
   </div>
@@ -30,12 +30,12 @@
           aria-selected="false"  >{{  group.description }}
           <div class="icons">
             <app-edit-group (groupToEdit)="editGroup($event)" [selectedGroup]="group"></app-edit-group>
-            
+
             <img _ngcontent-uyg-c115="" width="50" height="50" class="ml-auto" src="./../assets/images/minus-square-grey.svg" alt="minus" (click)="deleteGroup(group.group_id)">
           </div>
          </a>
       </li>
-      
+
       <!-- <li class="nav-item">
         <a class="nav-link" id="hrteam-tab" data-toggle="tab" href="#hrteam" role="tab" aria-controls="hrteam"
           aria-selected="false"> HR Team
@@ -91,7 +91,7 @@
                 <img _ngcontent-uyg-c115="" width="50" height="50" class="ml-auto" src="./../assets/images/minus-square-grey.svg" alt="minus" (click)="deleteGroupMember(group_members.email)">
               </div>
            </div>
-          
+
            <div class="add_group_btn"><app-add-member  [allGroups]="groups" [allUserLists]="userLists" [selectedGroup]="selectGroup"  [selectedMembers]="selectGroup.users" (groupMemberToAdd)="addMember($event)"></app-add-member> </div>
         </div>
        </div>
